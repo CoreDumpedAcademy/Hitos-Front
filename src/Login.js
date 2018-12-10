@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
-import "./App.css";
+import axios from "axios";
+import "./Login.css";
 
 export default class Login extends Component {
   constructor(props) {
@@ -22,8 +23,21 @@ export default class Login extends Component {
     });
   }
 
-  handleSubmit = event => {
+  handleSubmit = async event => {
     event.preventDefault();
+
+    const user = {
+      userName: this.state.userName,
+      password: this.state.password
+    };
+
+    await axios.post(`http://localhost:3000/user/log`, { userName: user.userName, password: user.password })
+      .then(res => {
+        localStorage.setItem('myToken', res.data.token);
+        console.log(res);
+        console.log(res.data);
+        console.log(localStorage.getItem('myToken'));
+      })
   }
 
   render() {
