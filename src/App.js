@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
-import BIRRA from './BIRRA.svg';
-import './App.css';
+import React, { Component } from "react";
+import BIRRA from "./BIRRA.svg";
+import "./App.css";
+import MainMenu from "./Router/MainMenu";
 
 class App extends Component {
   render() {
@@ -8,6 +9,7 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={BIRRA} className="App-logo" alt="logo" />
+          <MainMenu />
           <p>
             Edit <code>src/App.js</code> and save to reload.
           </p>
