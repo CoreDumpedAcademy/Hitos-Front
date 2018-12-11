@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import "./Login.css";
+import axios from "axios"
 
 export default class SignUp extends Component {
   constructor(props) {
@@ -8,16 +9,16 @@ export default class SignUp extends Component {
 
     this.state = {
       userName: "",
-      name: "",
-      surname: "",
-      telegramId: "",
+      firstName: "",
+      lastName: "",
+      idTelegram: "",
       password: ""
     };
   }
 
   validateForm() {
     return this.state.userName.length > 0 && this.state.password.length > 0
-      && this.state.name.length > 0 && this.state.surname.length > 0 && this.state.telegramId.length > 0;
+      && this.state.firstName.length > 0 && this.state.lastName.length > 0 && this.state.idTelegram.length > 0;
   }
 
   handleChange = event => {
@@ -26,8 +27,26 @@ export default class SignUp extends Component {
     });
   }
 
-  handleSubmit = event => {
+  handleSubmit = async event => {
     event.preventDefault();
+
+    const user = {
+      userName: this.state.userName,
+      password: this.state.password,
+      idTelegram: this.state.idTelegram,
+      firstName: this.state.firstName,
+      lastName: this.state.lastName
+    };
+
+    await axios.post(`http://localhost:3000/user/`, { 
+      userName: user.userName, 
+      password: user.password,
+      idTelegram: user.idTelegram, 
+      firstName: user.firstName,
+      lastName: user.lastName })
+      .then(res => {
+        console.log(res);
+      })
   }
 
   render() {
@@ -44,27 +63,27 @@ export default class SignUp extends Component {
               onChange={this.handleChange}
             />
           </FormGroup>
-          <FormGroup controlId="name" bsSize="large">
+          <FormGroup controlId="firstName" bsSize="large">
             <ControlLabel>Name</ControlLabel>
             <FormControl
               type="text"
-              value={this.state.name}
+              value={this.state.firstName}
               onChange={this.handleChange}
             />
           </FormGroup>
-          <FormGroup controlId="surname" bsSize="large">
+          <FormGroup controlId="lastName" bsSize="large">
             <ControlLabel>Surname</ControlLabel>
             <FormControl
               type="text"
-              value={this.state.surname}
+              value={this.state.lastName}
               onChange={this.handleChange}
             />
           </FormGroup>
-          <FormGroup controlId="telegramId" bsSize="large">
+          <FormGroup controlId="idTelegram" bsSize="large">
             <ControlLabel>Telegram ID</ControlLabel>
             <FormControl
               type="text"
-              value={this.state.telegramId}
+              value={this.state.idTelegram}
               onChange={this.handleChange}
             />
           </FormGroup>
