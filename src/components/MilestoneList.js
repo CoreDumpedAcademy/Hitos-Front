@@ -3,12 +3,25 @@ import axios from 'axios';
 
 class Milestone extends React.Component{
 	render(){
+		var bodyColor = {
+			backgroundColor: 'black',
+        }
+
+        var headingColor = {
+        	backgroundColor: 'grey',
+        }
+
+        var textColor = {
+        	color: 'white',
+        }
 		return(
-			<div className='Milestone' >
-				<h3>{this.props.title}</h3>
-				<p>Made by {this.props.author} at {this.props.creation}</p>
-				<p>Week: {this.props.week}		{this.props.category} -> {this.props.level}</p>
-				<p>{this.props.description}</p>
+			<div className='Milestone' class='panel panel-default' style={bodyColor}>
+				<div class='panel-heading' style={headingColor}>
+					<h3>{this.props.title}</h3>
+				</div>
+				<p style={textColor}>Made by {this.props.author} at {this.props.creation}</p>
+				<p style={textColor}>Week: {this.props.week}		{this.props.category} -> {this.props.level}</p>
+				<p style={textColor}>{this.props.description}</p>
 			</div>
 		)
 	}
