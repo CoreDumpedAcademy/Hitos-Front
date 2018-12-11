@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
-import "./Login.css";
-import axios from "axios"
+import "./SignUp.css";
+import axios from "axios";
+import Paths from "../../Paths/Paths";
 
 export default class SignUp extends Component {
   constructor(props) {
@@ -17,15 +18,20 @@ export default class SignUp extends Component {
   }
 
   validateForm() {
-    return this.state.userName.length > 0 && this.state.password.length > 0
-      && this.state.firstName.length > 0 && this.state.lastName.length > 0 && this.state.idTelegram.length > 0;
+    return (
+      this.state.userName.length > 0 &&
+      this.state.password.length > 0 &&
+      this.state.firstName.length > 0 &&
+      this.state.lastName.length > 0 &&
+      this.state.idTelegram.length > 0
+    );
   }
 
   handleChange = event => {
     this.setState({
       [event.target.id]: event.target.value
     });
-  }
+  };
 
   handleSubmit = async event => {
     event.preventDefault();
@@ -38,20 +44,22 @@ export default class SignUp extends Component {
       lastName: this.state.lastName
     };
 
-    await axios.post(`http://localhost:3000/user/`, { 
-      userName: user.userName, 
-      password: user.password,
-      idTelegram: user.idTelegram, 
-      firstName: user.firstName,
-      lastName: user.lastName })
+    await axios
+      .post(`${Paths.Api.Users}`, {
+        userName: user.userName,
+        password: user.password,
+        idTelegram: user.idTelegram,
+        firstName: user.firstName,
+        lastName: user.lastName
+      })
       .then(res => {
         console.log(res);
-      })
-  }
+      });
+  };
 
   render() {
     return (
-      <div className="Login">
+      <div className="SignUp">
         <h1>Sign Up</h1>
         <form onSubmit={this.handleSubmit}>
           <FormGroup controlId="userName" bsSize="large">

@@ -1,7 +1,8 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import BIRRA from "./BIRRA.svg";
 import "./App.css";
-import MainMenu from "./Router/MainMenu";
+import Paths from "./Paths/Paths";
 
 class App extends Component {
   render() {
@@ -9,9 +10,14 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={BIRRA} className="App-logo" alt="logo" />
-          <br/>
-          <MainMenu />
+          <br />
         </header>
+        <main>
+          <Link to={Paths.Links.Login}>
+            <button>Login</button>
+          </Link>
+        </main>
+        <footer />
       </div>
     );
   }

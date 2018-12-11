@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import axios from "axios";
 import "./Login.css";
+import { Link } from 'react-router-dom';
+import Paths from "../../Paths/Paths";
 
 export default class Login extends Component {
   constructor(props) {
@@ -31,7 +33,7 @@ export default class Login extends Component {
       password: this.state.password
     };
 
-    await axios.post(`http://localhost:3000/user/log`, { userName: user.userName, password: user.password })
+    await axios.post(Paths.Api.Login, { userName: user.userName, password: user.password })
       .then(res => {
         localStorage.setItem('myToken', res.data.token);
         console.log(res);
@@ -71,6 +73,8 @@ export default class Login extends Component {
             Login
           </Button>
         </form>
+        
+        <p>Or <Link to={Paths.Links.SignUp}>Sign up</Link></p>
       </div>
     );
   }
