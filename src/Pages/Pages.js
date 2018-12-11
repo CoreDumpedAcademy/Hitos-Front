@@ -14,7 +14,7 @@ import App from "../App";
 
 import Paths from "../Paths/Paths";
 
-import LinkTest from "../Components/LinkTest";
+import LinkTest from "../components/LinkTest";
 
 /**
  * All routes go here.
