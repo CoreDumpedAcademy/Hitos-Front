@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Login from "../Login";
 import SignUp from "../SignUp";
+import Milestones from "../components/MilestoneList"
 
 const MilestonesLink = () => {
   return (
@@ -68,6 +69,7 @@ class MainMenu extends Component {
 
           <Route path="/Login" component={Login} />
           <Route path="/SignUp" component={SignUp} />
+          <Route path="/Milestones" component={Milestones} />
         </div>
       </Router>
     );
