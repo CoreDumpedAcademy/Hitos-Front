@@ -13,10 +13,13 @@ class Milestone extends React.Component{
         var textColor = {
         	color: 'white',
         }
+        var status;
+        if(this.props.status)
+				status = ` || STATUS: ${this.props.status}`;
 		return(
 			<div className='Milestone' class='panel panel-default' style={bodyColor}>
 				<div class='panel-heading' style={headingColor}>
-					<h3>{this.props.title}</h3>
+					<h3>{this.props.title} {status}</h3>
 				</div>
 				<p style={textColor}>Made by {this.props.author} at {this.props.creation}</p>
 				<p style={textColor}>Week: {this.props.week}		{this.props.category} -> {this.props.level}</p>
@@ -40,6 +43,7 @@ class MilestoneList extends React.Component{
 					description={data.description}
 					category={data.category}
 					level={data.level}
+					status={data.status}
 				/>
 			))}
 			</div>
