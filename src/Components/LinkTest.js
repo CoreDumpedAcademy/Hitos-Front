@@ -5,7 +5,7 @@ import Paths from "../Paths/Paths";
 const LinkLabel = (props) => {
     return (
         <Link to={props.path}>
-          <button>{props.text}</button>
+          <a>{props.text}</a>
         </Link>
     );
 }
