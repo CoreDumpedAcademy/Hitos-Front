@@ -24,22 +24,34 @@ class Pages extends Component {
   render() {
     return (
       <div>
-      <nav class="navbar navbar-default">
+        <nav class="navbar navbar-default">
           <div class="container-fluid">
             <div class="navbar-header">
-              <a class="navbar-brand">Hitos API</a>
+              <a class="navbar-brand" href={Paths.Links.Landing}>Hitos API</a>
             </div>
             <ul class="nav navbar-nav">
-              <li class="active nav_item"><a href="landing">Home</a></li>
-              <li class="nav_item"><a href="login">Login</a></li>
-              <li class="nav_item"><a href="signup">Sign Up</a></li>
-              <li class="nav_item"><a href="milestones">Milestones</a></li>
-              <li class="nav_item"><a href="profile">Profile</a></li>
-              <li class="nav_item"><a href="search">Search</a></li>
+              <li class="active nav_item">
+                <a href="landing">Home</a>
+              </li>
+              <li class="nav_item">
+                <a href="login">Login</a>
+              </li>
+              <li class="nav_item">
+                <a href="signup">Sign Up</a>
+              </li>
+              <li class="nav_item">
+                <a href="milestones">Milestones</a>
+              </li>
+              <li class="nav_item">
+                <a href="profile">Profile</a>
+              </li>
+              <li class="nav_item">
+                <a href="search">Search</a>
+              </li>
             </ul>
           </div>
         </nav>
-      
+
         <main>
           <Route path={Paths.Links.Landing} component={Landing} />
           <Route path={Paths.Links.Login} component={Login} />

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import MilestoneList from '../../components/MilestoneList';
+import MilestoneList from '../../Components/MilestoneList';
 
 class Milestones extends Component {
   render() {

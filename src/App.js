@@ -11,7 +11,7 @@ class App extends Component {
         <nav class="navbar navbar-default">
           <div class="container-fluid">
             <div class="navbar-header">
-              <a class="navbar-brand">WebSiteName</a>
+              <a class="navbar-brand" href={Paths.Links.Landing}>WebSiteName</a>
             </div>
             <ul class="nav navbar-nav">
               <li class="active"><a href="landing">Home</a></li>
