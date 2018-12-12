@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 
 class Milestone extends React.Component{
 	render(){
@@ -28,13 +27,6 @@ class Milestone extends React.Component{
 }
 
 class MilestoneList extends React.Component{
-	constructor(props) {
-    super(props);
-    this.state = {
-      data: [],
-    };
-  }
-
 	renderMS(datas) {
 		return(
 			<div>
@@ -54,20 +46,10 @@ class MilestoneList extends React.Component{
 		);
 	}
 
-	handleResponse(){
-		axios.get('http://localhost:3000/milestone/')
-		.then(res => {
-			this.setState({
-        data: res.data.milestones
-      });
-		})
-	}
-
 	render(){
-		this.handleResponse();
 		return(
 			<div className='MilestoneList'>
-				{this.renderMS(this.state.data)}
+				{this.renderMS(this.props.data)}
 			</div>
 		)
 	};
