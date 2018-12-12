@@ -72,9 +72,9 @@ export default class Login extends Component {
           >
             Login
           </Button>
-        </form>
         
-        <p>Or <Link to={Paths.Links.SignUp}>Sign up</Link></p>
+          <p>Or <Link to={Paths.Links.SignUp}>Sign up</Link></p>
+        </form>
       </div>
     );
   }
