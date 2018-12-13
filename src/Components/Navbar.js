@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Paths from "../Paths/Paths";
 
 
-const LinkLabel = (props) => {
+const LinkNav = (props) => {
     return (
         <Link to={props.path}>
           {props.text}
@@ -17,26 +17,26 @@ class Navbar extends Component {
       <nav class="navbar navbar-default">
           <div class="container-fluid">
             <div class="navbar-header">
-              <a class="navbar-brand" >Hitos API</a>
+              <div class="navbar-brand" >Hitos API</div>
             </div>
             <ul class="nav navbar-nav">
               <li class="active nav_item">
-                <LinkLabel path={Paths.Links.Landing} text="Landing" />
+                <LinkNav path={Paths.Links.Landing} text="Landing" />
               </li>
               <li class="nav_item">
-                <LinkLabel path={Paths.Links.Login} text="Login" />
+                <LinkNav path={Paths.Links.Login} text="Login" />
               </li>
               <li class="nav_item">
-                <LinkLabel path={Paths.Links.SignUp} text="Sign Up" />
+                <LinkNav path={Paths.Links.SignUp} text="Sign Up" />
               </li>
               <li class="nav_item">
-                <LinkLabel path={Paths.Links.Milestones} text="Milestone" />
+                <LinkNav path={Paths.Links.Milestones} text="Milestone" />
               </li>
               <li class="nav_item">
-                <LinkLabel path={Paths.Links.Search} text="Search" />
+                <LinkNav path={Paths.Links.Search} text="Search" />
               </li>
               <li class="nav_item">
-                <LinkLabel path={Paths.Links.Profile} text="Profile" />
+                <LinkNav path={Paths.Links.Profile} text="Profile" />
               </li>
             </ul>
           </div>

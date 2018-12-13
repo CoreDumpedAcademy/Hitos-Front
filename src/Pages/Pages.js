@@ -4,7 +4,7 @@ import { Route } from "react-router-dom";
 /**
  * Import all page components here
  */
-import Navbar from "../components/Navbar";
+import Navbar from "../Components/Navbar";
 import Landing from "./Landing/Landing";
 import Login from "./Login/Login";
 import Milestones from "./Milestones/Milestones";
@@ -15,7 +15,7 @@ import App from "../App";
 
 import Paths from "../Paths/Paths";
 
-//import LinkTest from "../components/LinkTest";
+import LinkTest from "../Components/LinkTest";
 
 /**
  * All routes go here.
@@ -28,8 +28,8 @@ class Pages extends Component {
 
         <main>
           <Route component={Navbar} />
-
           
+          <Route path={Paths.Links.Landing} component={Landing} />
           <Route path={Paths.Links.Login} component={Login} />
           <Route path={Paths.Links.Milestones} component={Milestones} />
           <Route path={Paths.Links.Profile} component={Profile} />
