@@ -19,7 +19,6 @@ class UserData extends React.Component{
 					<h2><strong>Bienvenido {this.props.firstName} {this.props.lastName} </strong></h2>
 				</div>
 				<h5 style={textColor}><strong>Username: </strong> {this.props.username} </h5>
-				<h5 style={textColor}><strong>Mail: </strong> {this.props.mail} </h5>
 				<h5 style={textColor}><strong>Telegram: </strong> {this.props.telegram} </h5>
 			</div>
 		);
