@@ -23,10 +23,8 @@ import Navbar from "../Components/Navbar";
  */
 class Pages extends Component {
   render() {
-    console.log('Pages')
     return (
       <div>
-
         <main>
           <Navbar/>
           

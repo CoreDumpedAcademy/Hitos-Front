@@ -11,7 +11,6 @@ class Milestones extends Component {
 	};
 	
 	axios.get(Paths.Api.getMilestones).then(res => {
-		console.log("axios");
 		this.setState({
 		  data: res.data.milestones
 		});
