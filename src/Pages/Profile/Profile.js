@@ -6,7 +6,7 @@ class Profile extends Component {
 	constructor(props){
 		super(props);
 		this.state = {
-			data: {},
+			userData: {},
 		};
 	}
 
@@ -15,7 +15,7 @@ class Profile extends Component {
 		.then(res => {
 			console.log(res.data.milestones);
 			this.setState({
-				data: res.data.user,
+				userData: res.data.user,
 			});
 		})	
 	}
@@ -24,10 +24,10 @@ render() {
 		return (
 			<div className="Profile">
 				<UserData
-					username={this.state.data.userName}
-					firstName={this.state.data.firstName}
-					lastName={this.state.data.lastName}
-					telegram={this.state.data.idTelegram}
+					username={this.state.userData.userName}
+					firstName={this.state.userData.firstName}
+					lastName={this.state.userData.lastName}
+					telegram={this.state.userData.idTelegram}
 				/>
 			</div>
 		);
