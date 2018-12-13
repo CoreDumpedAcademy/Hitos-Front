@@ -1,6 +1,7 @@
 const API = 'http://localhost:3000';
 
 const User = '/user';
+const Milestone = '/milestone';
 
 const Paths = {
   Links: {
@@ -14,7 +15,8 @@ const Paths = {
   },
   Api: {
     Login: `${API}${User}/log`,
-    Users: `${API}${User}`
+    getUsers: `${API}${User}`,
+    getMilestones: `${API}${Milestone}`
   }
 };
 

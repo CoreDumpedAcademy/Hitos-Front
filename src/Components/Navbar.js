@@ -2,22 +2,18 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Paths from "../Paths/Paths";
 
-
-const LinkNav = (props) => {
-    return (
-        <Link to={props.path}>
-          {props.text}
-        </Link>
-    );
-}
+const LinkNav = props => {
+  return <Link to={props.path}>{props.text}</Link>;
+};
 
 class Navbar extends Component {
   render() {
     return (
-      <nav class="navbar navbar-default">
+      <div className="Navbar">
+        <nav class="navbar navbar-default">
           <div class="container-fluid">
             <div class="navbar-header">
-              <div class="navbar-brand" >Hitos API</div>
+              <div class="navbar-brand">Hitos API</div>
             </div>
             <ul class="nav navbar-nav">
               <li class="active nav_item">
@@ -41,6 +37,7 @@ class Navbar extends Component {
             </ul>
           </div>
         </nav>
+      </div>
     );
   }
 }

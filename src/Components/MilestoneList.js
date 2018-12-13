@@ -1,6 +1,12 @@
 import React from 'react';
 
 class Milestone extends React.Component{
+	formatDate(propsDate){
+		const date = new Date(propsDate);
+		console.log(date);
+		return (date.toLocaleDateString());
+	}
+
 	render(){
 		var bodyColor = {
 			backgroundColor: 'black',
@@ -21,7 +27,7 @@ class Milestone extends React.Component{
 				<div class='panel-heading' style={headingColor}>
 					<h3>{this.props.title} {status}</h3>
 				</div>
-				<p style={textColor}>Made by {this.props.author} at {this.props.creation}</p>
+				<p style={textColor}>Made by {this.props.author} at {this.formatDate(this.props.creation)}</p>
 				<p style={textColor}>Week: {this.props.week}		{this.props.category} -> {this.props.level}</p>
 				<p style={textColor}>{this.props.description}</p>
 			</div>
@@ -35,15 +41,15 @@ class MilestoneList extends React.Component{
 			<div>
 			{datas.map(data => (
 				<Milestone
-					key={data._id}
-					creation={data.creation}
-					title={data.title}
-					author={data.author}
-					week={data.week}
-					description={data.description}
-					category={data.category}
-					level={data.level}
-					status={data.status}
+				key={data._id}
+				creation={data.creation}
+				title={data.title}
+				author={data.author.userName}
+				week={data.week}
+				description={data.description}
+				category={data.category}
+				level={data.level}
+				status={data.status}
 				/>
 			))}
 			</div>
