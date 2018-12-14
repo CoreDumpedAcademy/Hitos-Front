@@ -18,6 +18,12 @@ class Search extends Component {
 	});
   }
 
+  handleSubmit =  event => {
+    event.preventDefault();
+
+    console.log("Hey boyyy");
+  }
+
 
   render() {
     return (
