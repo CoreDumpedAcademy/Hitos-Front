@@ -4,6 +4,7 @@ import axios from "axios";
 import "./Login.css";
 import { Link } from 'react-router-dom';
 import Paths from "../../Paths/Paths";
+import Modal from '../../Components/Modal';
 
 export default class Login extends Component {
   constructor(props) {
@@ -11,7 +12,8 @@ export default class Login extends Component {
 
     this.state = {
       userName: "",
-      password: ""
+      password: "",
+      isOpen: true 
     };
   }
 
@@ -37,9 +39,21 @@ export default class Login extends Component {
       .then(res => {
         localStorage.setItem('myToken', res.data.token);
         console.log(res);
-        console.log(res.data);
+        console.log(res.status);
         console.log(localStorage.getItem('myToken'));
+        if(res.status===200)window.location.href = Paths.Links.Profile;
+        else this.toggleModal();
       })
+      .catch(error => {
+        console.log(error.response);
+        this.toggleModal();
+      });
+  }
+
+  toggleModal = () => {
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
   }
 
   render() {
