@@ -12,6 +12,7 @@ import Profile from "./Profile/Profile";
 import Search from "./Search/Search";
 import SignUp from "./SignUp/SignUp";
 import App from "../App";
+import CreatingMillestone from "./CreatingMilestone/CreatingMillestone";
 
 import Paths from "../Paths/Paths";
 
@@ -35,6 +36,7 @@ class Pages extends Component {
           <Route path={Paths.Links.Search} component={Search} />
           <Route path={Paths.Links.SignUp} component={SignUp} />
           <Route exact path={Paths.Links.App} component={App} />
+          <Route exact path={Paths.Links.CreatingMillestone} component={CreatingMillestone} />
         </main>
       </div>
     );

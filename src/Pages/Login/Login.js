@@ -4,7 +4,6 @@ import axios from "axios";
 import "./Login.css";
 import { Link } from 'react-router-dom';
 import Paths from "../../Paths/Paths";
-import Modal from '../../Components/Modal';
 
 export default class Login extends Component {
   constructor(props) {

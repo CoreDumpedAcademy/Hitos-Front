@@ -34,6 +34,9 @@ class Navbar extends Component {
               <li class="nav_item">
                 <LinkNav path={Paths.Links.Profile} text="Profile" />
               </li>
+              <li class="nav_item">
+                <LinkNav path={Paths.Links.CreatingMillestone} text="Create Milestone" />
+              </li>
             </ul>
           </div>
         </nav>

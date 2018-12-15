@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import MilestoneList from "../../Components/MilestoneList";
 import axios from "axios";
 import Paths from "../../Paths/Paths";
-import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+import { Button, FormGroup, FormControl } from "react-bootstrap";
 //import SearchBar from "../../Components/searchBar"
 
 class Search extends Component {
@@ -10,11 +10,9 @@ class Search extends Component {
     super(props);
     this.state = {
       data: [],
-      searchMe: ""
+      searchMe: ''
    };
- }
-	
-	
+  }
 
   handleChange = event => {
     this.setState({
@@ -25,16 +23,15 @@ class Search extends Component {
   handleSubmit = async event => {
     event.preventDefault();
 
+    console.log(`${Paths.Api.getByWeek}/${this.state.searchMe}`)
     await axios.get(`${Paths.Api.getByWeek}/${this.state.searchMe}`).then(res => {
-      this.setState({
-        data: res.data.milestones
-      });
+      console.log(res.data)
+      if(res.data)
+        this.setState({
+          data: res.data
+        });
     });
   }
-  
-
-  
-
 
   render() {
     return (
@@ -58,7 +55,7 @@ class Search extends Component {
           
         </form>
         <div>
-        <MilestoneList data={this.state.data} />
+          <MilestoneList data={this.state.data} />
         </div>
       </div>
     );

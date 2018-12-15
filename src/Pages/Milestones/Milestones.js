@@ -8,13 +8,13 @@ class Milestones extends Component {
     super(props);
     this.state = {
       data: []
-	};
-	
-	axios.get(Paths.Api.getMilestones).then(res => {
-		this.setState({
-		  data: res.data.milestones
-		});
-	});
+    };
+
+    axios.get(Paths.Api.getMilestones).then(res => {
+      this.setState({
+        data: res.data.milestones
+      });
+    });
   }
 
   render() {
