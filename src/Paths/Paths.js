@@ -21,7 +21,8 @@ const Paths = {
     getUsers: `${API}${User}`,
     getMilestones: `${API}${Milestone}`,
     getByWeek: `${API}${Milestone}/byWeek`,
-    getApiEnumerator: `${API}${APIEnumerator}`
+    getApiEnumerator: `${API}${APIEnumerator}`,
+    getByName: `${API}${User}/byName`
   }
 };
 
