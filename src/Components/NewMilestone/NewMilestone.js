@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Paths from "../../Paths/Paths";
-import Selector from "../Selector/Selector"
+import Dropdown from "react-dropdown";
+import "react-dropdown/style.css";
 
 class NewMilestone extends Component {
   constructor(props) {
@@ -16,7 +17,7 @@ class NewMilestone extends Component {
       this.setState({
         enumerator: res.data
       });
-      console.log(this.state.enumerator)
+      console.log(this.state.enumerator);
     });
   }
 
@@ -24,9 +25,11 @@ class NewMilestone extends Component {
     return (
       <div className="NewMilestone">
         New Milestone title: week: category:
-        <Selector
-          collection={this.state.enumerator.cathegory}
-          first="Choose a cathegory"
+        <Dropdown
+          options={this.state.enumerator.cathegory}
+          onChange={this._onSelect}
+          value={this.state.enumerator.cathegory[0]}
+          placeholder="Select a cathegory"
         />
         level: description:
       </div>
