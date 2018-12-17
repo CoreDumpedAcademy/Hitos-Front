@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from 'axios';
 import UserData from '../../Components/userData';
+import Paths from "../../Paths/Paths";
 
 class Profile extends Component {
 	constructor(props){
@@ -11,16 +12,22 @@ class Profile extends Component {
 	}
 
 	handleRequest(){
-		axios.get('http://localhost:3000/user/5c114e667158d4151868d04b')
+		
+	}
+
+	componentDidMount(){
+		console.log(localStorage.getItem('user'));
+		axios.get(`${Paths.Api.getByName}/${localStorage.getItem('user')}`)
 		.then(res => {
-			console.log(res.data.milestones);
+			console.log(res);
 			this.setState({
-				userData: res.data.user,
+				userData: res.data[0],
 			});
 		})	
 	}
+
 render() {
-	this.handleRequest()
+	//this.handleRequest()
 		return (
 			<div className="Profile">
 				<UserData

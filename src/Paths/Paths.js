@@ -17,7 +17,8 @@ const Paths = {
     Login: `${API}${User}/log`,
     getUsers: `${API}${User}`,
     getMilestones: `${API}${Milestone}`,
-    getByWeek: `${API}${Milestone}/byWeek`
+    getByWeek: `${API}${Milestone}/byWeek`,
+    getByName: `${API}${User}/byName`
   }
 };
 
