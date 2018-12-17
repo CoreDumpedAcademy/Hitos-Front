@@ -9,7 +9,8 @@ class NewMilestone extends Component {
     super(props);
     this.state = {
       enumerator: {
-        cathegory: []
+        cathegory: [],
+        difficulty: []
       }
     };
 
@@ -22,16 +23,44 @@ class NewMilestone extends Component {
   }
 
   render() {
+    console.log("render");
     return (
       <div className="NewMilestone">
-        New Milestone title: week: category:
-        <Dropdown
-          options={this.state.enumerator.cathegory}
-          onChange={this._onSelect}
-          value={this.state.enumerator.cathegory[0]}
-          placeholder="Select a cathegory"
-        />
-        level: description:
+        New Milestone
+        <div>
+          <div>title:</div>
+          <div><input type="text" placeholder="Describe the milestone"/></div>
+        </div>
+        <div>
+          <div>week:</div>
+          <div />
+        </div>
+        <div>
+          <div>cathegory:</div>
+          <div>
+            <Dropdown
+              options={this.state.enumerator.cathegory}
+              onChange={this._onSelect}
+              value={this.state.enumerator.cathegory[0]}
+              placeholder="Select a cathegory"
+            />
+          </div>
+        </div>
+        <div>
+          <div>level:</div>
+          <div>
+            <Dropdown
+              options={this.state.enumerator.difficulty}
+              onChange={this._onSelect}
+              value={this.state.enumerator.difficulty[0]}
+              placeholder="Select a cathegory"
+            />
+          </div>
+        </div>
+        <div>
+          <div>description:</div>
+          <div><input type="text" placeholder="Describe the milestone"/></div>
+        </div>
       </div>
     );
   }
