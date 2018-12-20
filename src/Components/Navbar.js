@@ -9,7 +9,7 @@ const LinkNav = props => {
 class Navbar extends Component {
   render() {
     return (
-      <div className="Navbar">
+      <div class="Navbar">
         <nav class="navbar navbar-default">
           <div class="container-fluid">
             <div class="navbar-header">
@@ -33,6 +33,9 @@ class Navbar extends Component {
               </li>
               <li class="nav_item">
                 <LinkNav path={Paths.Links.Profile} text="Profile" />
+              </li>
+              <li class="nav_item">
+                <LinkNav path={Paths.Links.CreatingMillestone} text="Create Milestone" />
               </li>
             </ul>
           </div>

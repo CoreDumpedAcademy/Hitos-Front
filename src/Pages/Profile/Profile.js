@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from 'axios';
 import UserData from '../../Components/userData';
 import MilestoneList from '../../Components/MilestoneList';
+import Paths from "../../Paths/Paths";
 
 class Profile extends Component {
 	constructor(props){
@@ -12,8 +13,9 @@ class Profile extends Component {
 			user: tempUserData,
 			milestones: tempMilestoneList,
 		};
-		axios.get('http://localhost:3000/user/5c015bd66aa4e2407c5cb650')
+		axios.get(`${Paths.Api.getUsers}/5c015bd66aa4e2407c5cb650`)
 		.then(res => {
+			tempUserData = res.data.user;
 			var i = 0;
 			res.data.user.milestonesCollection.map(data => {
 				axios.get(`http://localhost:3000/milestone/${res.data.user.milestonesCollection[i]._id}`)
@@ -22,7 +24,7 @@ class Profile extends Component {
 					tempMilestoneList[i].status = res.data.user.milestonesCollection[i].status;
 					i++;
 					this.setState({
-						user: res.data.user,
+						user: tempUserData,
 						milestones: tempMilestoneList,
 					});
 				});

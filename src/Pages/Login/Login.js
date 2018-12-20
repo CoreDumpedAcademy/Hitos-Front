@@ -11,7 +11,8 @@ export default class Login extends Component {
 
     this.state = {
       userName: "",
-      password: ""
+      password: "",
+      isOpen: true 
     };
   }
 
@@ -36,10 +37,37 @@ export default class Login extends Component {
     await axios.post(Paths.Api.Login, { userName: user.userName, password: user.password })
       .then(res => {
         localStorage.setItem('myToken', res.data.token);
+        localStorage.setItem('user', user.userName);
         console.log(res);
-        console.log(res.data);
+        console.log(res.status);
         console.log(localStorage.getItem('myToken'));
+        if(res.status===200)window.location.href = Paths.Links.Profile;
+        //else this.toggleModal();
       })
+      .catch(error => {
+        console.log(error.response);
+        //this.toggleModal();
+      });
+  }
+
+  toggleModal = () => {
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
+  }
+
+  componentDidMount(){
+    const token=localStorage.getItem('myToken');
+    axios.defaults.headers.common = {'authorization': "bearer " + token}
+
+    axios.get('http://localhost:3000/api/private')
+    .then(res => {
+      console.log(res);
+    })  
+    .catch(error => {
+        console.log(error);
+        //this.toggleModal();
+      });
   }
 
   render() {
