@@ -27,7 +27,7 @@ class MilestoneList extends React.Component{
 			<div className='MilestoneList'>
 				{this.renderMS(this.props.data)}
 			</div>
-		)
+		);
 	};
 }
 
