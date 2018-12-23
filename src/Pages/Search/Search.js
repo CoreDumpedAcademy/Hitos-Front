@@ -23,12 +23,10 @@ class Search extends Component {
   handleSubmit = async event => {
     event.preventDefault();
 
-    console.log(`${Paths.Api.getByWeek}/${this.state.searchMe}`)
     await axios.get(`${Paths.Api.getByWeek}/${this.state.searchMe}`).then(res => {
-      console.log(res.data)
       if(res.data)
         this.setState({
-          data: res.data
+          data: res.data.milestones
         });
     });
   }

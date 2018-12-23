@@ -3,40 +3,28 @@ import { Link } from "react-router-dom";
 import Paths from "../Paths/Paths";
 
 const LinkNav = props => {
-  return <Link to={props.path}>{props.text}</Link>;
+  const itemStyle = (window.location.href.includes(props.path) ? "active " : "") + "nav_item";
+
+  return <li className={itemStyle}><Link to={props.path}>{props.text}</Link></li>
 };
 
 class Navbar extends Component {
   render() {
     return (
-      <div class="Navbar">
-        <nav class="navbar navbar-default">
-          <div class="container-fluid">
-            <div class="navbar-header">
-              <div class="navbar-brand">Hitos API</div>
+      <div className="Navbar">
+        <nav className="navbar navbar-default">
+          <div className="container-fluid">
+            <div className="navbar-header">
+              <div className="navbar-brand">Hitos API</div>
             </div>
-            <ul class="nav navbar-nav">
-              <li class="active nav_item">
-                <LinkNav path={Paths.Links.Landing} text="Landing" />
-              </li>
-              <li class="nav_item">
-                <LinkNav path={Paths.Links.Login} text="Login" />
-              </li>
-              <li class="nav_item">
-                <LinkNav path={Paths.Links.SignUp} text="Sign Up" />
-              </li>
-              <li class="nav_item">
-                <LinkNav path={Paths.Links.Milestones} text="Milestone" />
-              </li>
-              <li class="nav_item">
-                <LinkNav path={Paths.Links.Search} text="Search" />
-              </li>
-              <li class="nav_item">
-                <LinkNav path={Paths.Links.Profile} text="Profile" />
-              </li>
-              <li class="nav_item">
-                <LinkNav path={Paths.Links.CreatingMillestone} text="Create Milestone" />
-              </li>
+            <ul className="nav navbar-nav">
+              <LinkNav path={Paths.Links.Landing} text="Landing" />
+              <LinkNav path={Paths.Links.Login} text="Login" />
+              <LinkNav path={Paths.Links.SignUp} text="Sign Up" />
+              <LinkNav path={Paths.Links.Milestones} text="Milestone" />
+              <LinkNav path={Paths.Links.Search} text="Search" />
+              <LinkNav path={Paths.Links.Profile} text="Profile" />
+              <LinkNav path={Paths.Links.CreatingMillestone} text="Create Milestone" />
             </ul>
           </div>
         </nav>
