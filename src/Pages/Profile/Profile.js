@@ -40,7 +40,6 @@ class Profile extends Component {
 	}
 
 	renderUD(data) {
-		console.log(this.state.user);
 		return(
 			<div>
 				<UserData
