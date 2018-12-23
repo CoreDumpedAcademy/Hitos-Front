@@ -27,11 +27,13 @@ class MilestoneList extends React.Component {
     }
   }
 
-  render() {
-    return (
-      <div className="MilestoneList">{this.renderMS(this.props.data)}</div>
-    );
-  }
+	render(){
+		return(
+			<div className='MilestoneList'>
+				{this.renderMS(this.props.data)}
+			</div>
+		);
+	};
 }
 
 export default MilestoneList;
