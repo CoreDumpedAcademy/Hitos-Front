@@ -56,7 +56,7 @@ export default class Login extends Component {
     });
   }
 
-  componentDidMount(){
+  /*componentDidMount(){
     const token=localStorage.getItem('myToken');
     axios.defaults.headers.common = {'authorization': "bearer " + token}
 
@@ -68,7 +68,7 @@ export default class Login extends Component {
         console.log(error);
         //this.toggleModal();
       });
-  }
+  }*/
 
   render() {
     return (
