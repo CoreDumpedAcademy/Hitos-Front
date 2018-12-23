@@ -38,7 +38,12 @@ const TextArea = props => {
   return (
     <FormGroup controlId={props.id}>
       <ControlLabel>{props.label}</ControlLabel>
-      <FormControl componentClass="textarea" placeholder={props.placeholder} />
+      <FormControl 
+        componentClass="textarea" 
+        placeholder={props.placeholder} 
+        value={props.value}
+        onChange={props.handler}
+      />
     </FormGroup>
   );
 };
@@ -47,7 +52,7 @@ const SelectField = props => {
   return (
     <FormGroup controlId={props.id}>
       <ControlLabel>{props.title}</ControlLabel>
-      <FormControl componentClass="select">
+      <FormControl componentClass="select" onChange={props.onChange}>
         <option value={props.value} disabled selected>-- {props.placeholder} --</option>
         {props.options.map(el =>
           <option value={el}>{el}</option>
@@ -65,7 +70,11 @@ class NewMilestone extends Component {
         cathegory: [],
         difficulty: []
       },
-      title: ""
+      title: "",
+      description: "",
+      week: 1,
+      category: "",
+      difficulty: ""
     };
 
     axios.get(Paths.Api.getApiEnumerator).then(res => {
@@ -82,11 +91,41 @@ class NewMilestone extends Component {
     });
   };
 
+  handleSubmit = async event => {
+    event.preventDefault();
+
+    const milestone = {
+      title: this.state.title,
+      description: this.state.description,
+      week: this.state.week,
+      category: this.state.category,
+      difficulty: this.state.difficulty,
+      author: "5c17d315f6abb6169c65f32a"
+    };
+
+    await axios.post(Paths.Api.getMilestones, { 
+      title: milestone.title,
+      description: milestone.description,
+      week: milestone.week,
+      category: milestone.category,
+      difficulty: milestone.difficulty,
+      author: milestone.author })
+      .then(res => {
+        console.log(res);
+      })
+      .catch(error => {
+        console.log(error.response);
+        //this.toggleModal();
+      });
+
+    console.log(this.state);
+  };
+
   render() {
     return (
       <div className="NewMilestone">
         <h1>New Milestone</h1>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <TextInput
             id="title"
             label="Title:"
@@ -95,36 +134,38 @@ class NewMilestone extends Component {
             placeholder="Put a title for the milestone"
           />
           <NumberInput
-            id="cathegory"
+            id="week"
             label="Week:"
-            value={this.state.cathegory}
+            value={this.state.week}
             handler={this.handleChange}
             min="1"
             placeholder="Put the week number"
           />
           <SelectField
-            title="Cathegory:"
-            id="cathegory"
-            placeholder="Select a cathegory"
+            title="Category:"
+            id="category"
+            placeholder="Select a category"
             options={this.state.enumerator.cathegory}
-            onChange={this._onSelect}
-            value={this.state.enumerator.cathegory[0]}
+            onChange={this.handleChange}
+            value={this.state.category}
           />
           <SelectField
-            title="Level:"
-            id="level"
+            title="Difficulty:"
+            id="difficulty"
             placeholder="Select a difficulty"
             options={this.state.enumerator.difficulty}
-            onChange={this._onSelect}
-            value={this.state.enumerator.difficulty[0]}
+            onChange={this.handleChange}
+            value={this.state.difficutly}
           />
           <TextArea
             id="description"
             label="Description:"
             placeholder="Describe the milestone"
+            value={this.state.description}
+            handler={this.handleChange}
           />
 
-          <Button block bsSize="large" disabled type="submit">
+          <Button block bsSize="large" type="submit">
             Publish
           </Button>
         </form>

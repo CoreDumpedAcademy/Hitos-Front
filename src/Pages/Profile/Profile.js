@@ -13,7 +13,7 @@ class Profile extends Component {
 			user: tempUserData,
 			milestones: tempMilestoneList,
 		};
-		axios.get(`${Paths.Api.getUsers}/5c1fe30cac8fc11eec5547da`)
+		axios.get(`${Paths.Api.getUsers}/${localStorage.getItem('user')}`)
 		.then(res => {
 			tempUserData = res.data.user;
 			var i = 0;

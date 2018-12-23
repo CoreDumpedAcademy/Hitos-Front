@@ -40,7 +40,7 @@ export default class Login extends Component {
         localStorage.setItem('user', user.userName);
         console.log(res);
         console.log(res.status);
-        console.log(localStorage.getItem('myToken'));
+        console.log(localStorage.getItem('user'));
         if(res.status===200)window.location.href = Paths.Links.Profile;
         //else this.toggleModal();
       })
