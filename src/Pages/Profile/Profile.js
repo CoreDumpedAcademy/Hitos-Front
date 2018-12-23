@@ -13,20 +13,19 @@ class Profile extends Component {
 			user: tempUserData,
 			milestones: tempMilestoneList,
 		};
-		axios.get(`${Paths.Api.getUsers}/5c015bd66aa4e2407c5cb650`)
+		axios.get(`${Paths.Api.getUsers}/5c1fe30cac8fc11eec5547da`)
 		.then(res => {
 			tempUserData = res.data.user;
 			var i = 0;
+			this.setState({
+				user: tempUserData,
+			});
 			res.data.user.milestonesCollection.map(data => {
-				axios.get(`http://localhost:3000/milestone/${res.data.user.milestonesCollection[i]._id}`)
-				.then(res2 => {
-					tempMilestoneList[i] = res2.data.milestone;
-					tempMilestoneList[i].status = res.data.user.milestonesCollection[i].status;
-					i++;
-					this.setState({
-						user: tempUserData,
-						milestones: tempMilestoneList,
-					});
+				tempMilestoneList[i] = data.milestone;
+				tempMilestoneList[i].status = data.status;
+				i++;
+				this.setState({
+					milestones: tempMilestoneList,
 				});
 			});
 		});
@@ -41,6 +40,7 @@ class Profile extends Component {
 	}
 
 	renderUD(data) {
+		console.log(this.state.user);
 		return(
 			<div>
 				<UserData
