@@ -18,6 +18,7 @@ import Paths from "../Paths/Paths";
 
 import Navbar from "../Components/Navbar";
 
+
 /**
  * All routes go here.
  * Don't forget to import the components above after adding new route.
@@ -38,6 +39,7 @@ class Pages extends Component {
           <Route exact path={Paths.Links.App} component={App} />
           <Route exact path={Paths.Links.CreatingMillestone} component={CreatingMillestone} />
         </main>
+        
       </div>
     );
   }

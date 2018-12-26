@@ -38,16 +38,15 @@ class Search extends Component {
           <FormGroup controlId="searchMe" bsSize="large">
             <FormControl
               value={this.state.searchMe}
-              placeholder="search"
+              placeholder="Search by week"
               onChange={this.handleChange}
               type="text"
             />
             <Button
-            block
             bsSize="large"
             type="submit"
           >
-            Login
+            Search
           </Button>
           </FormGroup>
           
