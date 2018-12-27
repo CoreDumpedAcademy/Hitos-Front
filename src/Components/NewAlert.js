@@ -3,12 +3,11 @@ import { Alert } from "react-bootstrap";
 
 class NewAlert extends Component{
     render() {
-    	if (this.props.hide) return null;
+    	if (this.props.isOpen==false) return null;
         return(
             <div className="NewAlert">
-                <Alert bsStyle="warning">
-				  <strong>Holy guacamole!</strong> Best check yo self, you're not looking too
-				  good.
+                <Alert bsStyle="danger">
+				  {this.props.text}
 				</Alert>
             </div>
         );

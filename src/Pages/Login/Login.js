@@ -5,6 +5,8 @@ import "./Login.css";
 import { Link } from 'react-router-dom';
 import Paths from "../../Paths/Paths";
 
+import NewAlert from "../../Components/NewAlert";
+
 export default class Login extends Component {
   constructor(props) {
     super(props);
@@ -12,7 +14,8 @@ export default class Login extends Component {
     this.state = {
       userName: "",
       password: "",
-      isOpen: true 
+      isOpen: false,
+      alertMessage: "Error"
     };
   }
 
@@ -42,19 +45,23 @@ export default class Login extends Component {
         console.log(res.status);
         console.log(localStorage.getItem('user'));
         if(res.status===200)window.location.href = Paths.Links.Profile;
-        //else this.toggleModal();
+        else this.toggleAlert();
       })
       .catch(error => {
         console.log(error.response);
-        //this.toggleModal();
+        this.setState({
+          alertMessage: error.response.data.message
+        });
+        this.toggleAlert();
       });
   }
 
-  toggleModal = () => {
+  toggleAlert = () => {
     this.setState({
-      isOpen: !this.state.isOpen
+      isOpen: true
     });
   }
+
 
   /*componentDidMount(){
     const token=localStorage.getItem('myToken');
@@ -73,6 +80,7 @@ export default class Login extends Component {
   render() {
     return (
       <div className="Login">
+        <NewAlert isOpen={this.state.isOpen} text={this.state.alertMessage}/>
         <h1>Login</h1>
         <form onSubmit={this.handleSubmit}>
           <FormGroup controlId="userName" bsSize="large">

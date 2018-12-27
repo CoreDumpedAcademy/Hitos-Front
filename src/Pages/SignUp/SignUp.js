@@ -4,6 +4,8 @@ import "./SignUp.css";
 import axios from "axios";
 import Paths from "../../Paths/Paths";
 
+import NewAlert from "../../Components/NewAlert";
+
 export default class SignUp extends Component {
   constructor(props) {
     super(props);
@@ -13,7 +15,9 @@ export default class SignUp extends Component {
       firstName: "",
       lastName: "",
       idTelegram: "",
-      password: ""
+      password: "",
+      isOpen: false,
+      alertMessage: "Error"
     };
   }
 
@@ -45,7 +49,7 @@ export default class SignUp extends Component {
     };
 
     await axios
-      .post(`${Paths.Api.Users}`, {
+      .post(`${Paths.Api.getUsers}`, {
         userName: user.userName,
         password: user.password,
         idTelegram: user.idTelegram,
@@ -57,12 +61,23 @@ export default class SignUp extends Component {
       })
       .catch(error => {
         console.log(error.response);
+        this.setState({
+          alertMessage: error.response.data.message
+        });
+        this.toggleAlert();
       });
   };
+
+  toggleAlert = () => {
+    this.setState({
+      isOpen: true
+    });
+  }
 
   render() {
     return (
       <div className="SignUp">
+        <NewAlert isOpen={this.state.isOpen} text={this.state.alertMessage}/>
         <h1>Sign Up</h1>
         <form onSubmit={this.handleSubmit}>
           <FormGroup controlId="userName" bsSize="large">
