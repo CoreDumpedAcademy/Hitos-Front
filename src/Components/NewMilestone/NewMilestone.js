@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import axios from "axios";
 import Paths from "../../Paths/Paths";
+import SelectField from "../SelectField.js"
 import "react-dropdown/style.css";
 import "./NewMilestone.css";
 
@@ -44,20 +45,6 @@ const TextArea = props => {
         value={props.value}
         onChange={props.handler}
       />
-    </FormGroup>
-  );
-};
-
-const SelectField = props => {
-  return (
-    <FormGroup controlId={props.id}>
-      <ControlLabel>{props.title}</ControlLabel>
-      <FormControl componentClass="select" onChange={props.onChange}>
-        <option value={props.value} disabled selected>-- {props.placeholder} --</option>
-        {props.options.map(el =>
-          <option value={el}>{el}</option>
-        )}
-      </FormControl>
     </FormGroup>
   );
 };
