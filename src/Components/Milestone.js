@@ -22,8 +22,8 @@ class Milestone extends React.Component{
         if(this.props.status)
 				status = ` || STATUS: ${this.props.status}`;
 		return(
-			<div className='Milestone' class='panel panel-default' style={bodyColor}>
-				<div class='panel-heading' style={headingColor}>
+			<div id='Milestone' className='panel panel-default' style={bodyColor}>
+				<div className='panel-heading' style={headingColor}>
 					<h3>{this.props.title} {status}</h3>
 				</div>
 				<p style={textColor}>Made by {this.props.author} at {this.formatDate(this.props.creation)}</p>
