@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import MilestoneList from "../../Components/MilestoneList";
 import axios from "axios";
 import Paths from "../../Paths/Paths";
+import SearchByCathegory from "../../Components/SearchByCathegory.js"
 import { Button, FormGroup, FormControl } from "react-bootstrap";
 //import SearchBar from "../../Components/searchBar"
 
@@ -20,7 +21,7 @@ class Search extends Component {
     });
   }
 
-  handleSubmit = async event => {
+  handleSubmitWeek = async event => {
     event.preventDefault();
 
     await axios.get(`${Paths.Api.getByWeek}/${this.state.searchMe}`).then(res => {
@@ -31,10 +32,16 @@ class Search extends Component {
     });
   }
 
+  handleSubmitCathegory = (data) => {
+    this.setState({
+      data: data,
+    });
+  }
+
   render() {
     return (
       <div className="Search">
-        <form class="navbar-form" role="search" onSubmit={this.handleSubmit}>
+        <form className="navbar-form" role="search" onSubmit={this.handleSubmitWeek}>
           <FormGroup controlId="searchMe" bsSize="large">
             <FormControl
               value={this.state.searchMe}
@@ -51,6 +58,7 @@ class Search extends Component {
           </FormGroup>
           
         </form>
+        <SearchByCathegory onSubmit={ this.handleSubmitCathegory }/>
         <div>
           <MilestoneList data={this.state.data} />
         </div>
