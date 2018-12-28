@@ -10,26 +10,26 @@ class SearchByCathegory extends Component{
 	constructor(props) {
 		super(props);
 		this.state = {
-			CathegoryOptions: [],
-			SelectedCathegory: "",
+			CategoryOptions: [],
+			SelectedCategory: "",
 		};
 		axios.get(Paths.Api.getApiEnumerator).then(res => {
 			this.setState({
-				CathegoryOptions: res.data.cathegory
+				CategoryOptions: res.data.cathegory
 			});
 		});
 	}
 
 	handleChange = event => {
 		this.setState({
-			SelectedCathegory: event.target.value,
+			SelectedCategory: event.target.value,
 		});
 	}
 
 	handleSubmit = event => {
-		// make request
-		var res = [];
-		this.props.onSubmit(res);
+		axios.get(`${Paths.Api.getMsByCategory}/${this.state.SelectedCategory}`).then(res => {
+			this.props.onSubmit(res.data.milestones);
+		});
 	}
 
 	render() {
@@ -38,14 +38,14 @@ class SearchByCathegory extends Component{
 			width: "480px"
 		}
 		return(
-			<div className="SearchByCathegory" style={styleAll}>
+			<div className="SearchByCategory" style={styleAll}>
 				<form>
 					<SelectField
-						id="CathegoryField"
-						placeholder="Search By Cathegory"
-						options={ this.state.CathegoryOptions }
+						id="CategoryField"
+						placeholder="Search By Category"
+						options={ this.state.CategoryOptions }
 						onChange={ this.handleChange }
-						value={ this.state.SelectedCathegory }
+						value={ this.state.SelectedCategory }
 					/>
 					<Button onClick={ this.handleSubmit }
 						bsSize="large"
