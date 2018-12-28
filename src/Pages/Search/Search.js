@@ -34,7 +34,7 @@ class Search extends Component {
   render() {
     return (
       <div className="Search">
-        <form class="navbar-form" role="search" onSubmit={this.handleSubmit}>
+        <form className="navbar-form" role="search" onSubmit={this.handleSubmit}>
           <FormGroup controlId="searchMe" bsSize="large">
             <FormControl
               value={this.state.searchMe}

@@ -7,21 +7,30 @@ class Milestones extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: []
+            data: [],
+            isLoaded: false
         };
-        axios.get(Paths.Api.getMilestones).then(res => {
+    }
+
+    componentDidMount() {
+        axios.get(`${Paths.Api.getByName}/${localStorage.getItem('user')}`).then(res => {
             this.setState({
-                data: res.data.milestones
+                data: res.data.milestonesCollection,
+                isLoaded: true
             });
 	   });
     }
 
     render() {
-        return (
-            <div className="Milestones">
-                <MilestoneList data={this.state.data} />
-            </div>
-        );
+		if(this.state.isLoaded){
+            return (
+                <div className="Milestones">
+                    <MilestoneList data={this.state.data} />
+                </div>
+            );
+		} else {
+			return <div>Now loading...</div>
+		}
     }
 }
 

@@ -6,10 +6,10 @@ const SelectField = props => {
   return (
     <FormGroup controlId={props.id}>
       <ControlLabel>{props.title}</ControlLabel>
-      <FormControl componentClass="select" onChange={props.onChange}>
-        <option value={props.value} disabled selected>-- {props.placeholder} --</option>
+      <FormControl componentClass="select" onChange={props.onChange} defaultValue={props.value}>
+        <option key="none" disabled>-- {props.placeholder} --</option>
         {props.options.map(el =>
-          <option value={el}>{el}</option>
+          <option key={el}>{el}</option>
         )}
       </FormControl>
     </FormGroup>

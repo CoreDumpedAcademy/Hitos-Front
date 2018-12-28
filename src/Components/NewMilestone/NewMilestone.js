@@ -68,7 +68,6 @@ class NewMilestone extends Component {
       this.setState({
         enumerator: res.data
       });
-      console.log(this.state.enumerator);
     });
   }
 
