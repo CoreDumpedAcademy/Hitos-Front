@@ -7,26 +7,19 @@ import Paths from "../../Paths/Paths";
 class Profile extends Component {
 	constructor(props){
 		super(props);
-		var tempMilestoneList = [];
-		var tempUserData = {};
 		this.state = {
-			user: tempUserData,
-			milestones: tempMilestoneList,
+			user: {},
+			milestones: [],
+			isLoaded: false
 		};
-		axios.get(`${Paths.Api.getUsers}/${localStorage.getItem('user')}`)
+	}
+
+	componentDidMount() {
+		axios.get(`${Paths.Api.getByName}/${localStorage.getItem('user')}`)
 		.then(res => {
-			tempUserData = res.data.user;
-			var i = 0;
 			this.setState({
-				user: tempUserData,
-			});
-			res.data.user.milestonesCollection.map(data => {
-				tempMilestoneList[i] = data.milestone;
-				tempMilestoneList[i].status = data.status;
-				i++;
-				this.setState({
-					milestones: tempMilestoneList,
-				});
+				user: res.data,
+				isLoaded: true
 			});
 		});
 	}
@@ -52,12 +45,16 @@ class Profile extends Component {
 	}
 
 	render() {
-		return (
-			<div className="Profile">
-				{this.renderUD(this.state.user)}
-				{this.renderML(this.state.milestones)}
-			</div>
-		);
+		if(this.state.isLoaded){
+			return (
+				<div className="Profile">
+					{this.renderUD(this.state.user)}
+					{this.renderML(this.state.user.milestonesCollection)}
+				</div>
+			);
+		} else {
+			return <div>Now loading...</div>
+		}
 	}
 }
 
