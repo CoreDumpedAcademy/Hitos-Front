@@ -1,0 +1,14 @@
+
+form {
+  float: left;   
+  border: 1px solid red;
+}
+
+#potato {
+  clear: right;
+  margin-left: 10px;    
+}
+
+.mymy {
+	float:left;
+}

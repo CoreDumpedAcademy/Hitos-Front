@@ -61,7 +61,7 @@ class NewMilestone extends Component {
       description: "",
       week: 1,
       category: "",
-      difficulty: ""
+      level: ""
     };
 
     axios.get(Paths.Api.getApiEnumerator).then(res => {
@@ -85,8 +85,8 @@ class NewMilestone extends Component {
       description: this.state.description,
       week: this.state.week,
       category: this.state.category,
-      difficulty: this.state.difficulty,
-      author: "5c17d315f6abb6169c65f32a"
+      level: this.state.level,
+      author: localStorage.getItem('id')
     };
 
     await axios.post(Paths.Api.getMilestones, { 
@@ -94,7 +94,7 @@ class NewMilestone extends Component {
       description: milestone.description,
       week: milestone.week,
       category: milestone.category,
-      difficulty: milestone.difficulty,
+      level: milestone.level,
       author: milestone.author })
       .then(res => {
         console.log(res);
@@ -137,7 +137,7 @@ class NewMilestone extends Component {
           />
           <SelectField
             title="Difficulty:"
-            id="difficulty"
+            id="level"
             placeholder="Select a difficulty"
             options={this.state.enumerator.difficulty}
             onChange={this.handleChange}
