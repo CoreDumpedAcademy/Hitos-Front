@@ -9,15 +9,15 @@ class MilestoneList extends React.Component {
         <div>
           {datas.map(data => (
             <Milestone
-              key={data.milestone._id}
-              creation={data.milestone.creation}
-              title={data.milestone.title}
-              author={data.milestone.author.userName}
-              week={data.milestone.week}
-              description={data.milestone.description}
-              category={data.milestone.category}
-              level={data.milestone.level}
-              status={data.milestone.status}
+              key={data._id}
+              creation={data.creation}
+              title={data.title}
+              author={data.author.userName}
+              week={data.week}
+              description={data.description}
+              category={data.category}
+              level={data.level}
+              status={data.status}
             />
           ))}
         </div>
