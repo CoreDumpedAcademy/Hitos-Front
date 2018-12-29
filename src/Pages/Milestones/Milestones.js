@@ -13,9 +13,9 @@ class Milestones extends Component {
     }
 
     componentDidMount() {
-        axios.get(`${Paths.Api.getByName}/${localStorage.getItem('user')}`).then(res => {
+        axios.get(`${Paths.Api.getMilestones}`).then(res => {
             this.setState({
-                data: res.data.milestonesCollection,
+                data: res.data.milestones,
                 isLoaded: true
             });
 	   });
