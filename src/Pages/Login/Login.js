@@ -42,6 +42,7 @@ export default class Login extends Component {
         localStorage.setItem('myToken', res.data.token);
         localStorage.setItem('user', user.userName);
         localStorage.setItem('id', res.data.id);
+        localStorage.setItem('status', "log");
         console.log(res);
         console.log(res.status);
         console.log(localStorage.getItem('user'));

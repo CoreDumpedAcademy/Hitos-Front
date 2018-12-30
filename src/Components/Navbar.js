@@ -21,10 +21,6 @@ class Navbar extends Component {
               <LinkNav path={Paths.Links.Landing} text="Landing" />
               <LinkNav path={Paths.Links.Login} text="Login" />
               <LinkNav path={Paths.Links.SignUp} text="Sign Up" />
-              <LinkNav path={Paths.Links.Milestones} text="Milestone" />
-              <LinkNav path={Paths.Links.Search} text="Search" />
-              <LinkNav path={Paths.Links.Profile} text="Profile" />
-              <LinkNav path={Paths.Links.CreatingMillestone} text="Create Milestone" />
             </ul>
           </div>
         </nav>

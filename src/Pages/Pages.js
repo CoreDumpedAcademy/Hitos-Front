@@ -17,6 +17,7 @@ import CreatingMillestone from "./CreatingMilestone/CreatingMillestone";
 import Paths from "../Paths/Paths";
 
 import Navbar from "../Components/Navbar";
+import Navbar2 from "../Components/Navbar2";
 
 
 /**
@@ -25,19 +26,28 @@ import Navbar from "../Components/Navbar";
  */
 class Pages extends Component {
   render() {
-    return (
-      <div>
+    if(localStorage.getItem("status")=="log")
+      return (
+        <div>
         <main>
-          <Navbar/>
-          
-          <Route path={Paths.Links.Landing} component={Landing} />
-          <Route path={Paths.Links.Login} component={Login} />
+          <Navbar2/>
           <Route path={Paths.Links.Milestones} component={Milestones} />
           <Route path={Paths.Links.Profile} component={Profile} />
           <Route path={Paths.Links.Search} component={Search} />
-          <Route path={Paths.Links.SignUp} component={SignUp} />
-          <Route exact path={Paths.Links.App} component={App} />
           <Route exact path={Paths.Links.CreatingMillestone} component={CreatingMillestone} />
+          <Route path={Paths.Links.Login} component={Login} />
+        </main>
+        
+      </div>
+      );
+    else
+      return (
+      <div>
+        <main>
+          <Navbar/>
+          <Route path={Paths.Links.Landing} component={Landing} />
+          <Route path={Paths.Links.Login} component={Login} />
+          <Route path={Paths.Links.SignUp} component={SignUp} />
         </main>
         
       </div>
