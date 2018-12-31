@@ -38,7 +38,7 @@ class SearchByCathegory extends Component{
 			width: "480px"
 		}
 		return(
-			<div className="SearchByCategory" style={styleAll}>
+			<div className="SearchByCategory">
 				<form>
 					<SelectField
 						id="CategoryField"

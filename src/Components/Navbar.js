@@ -9,10 +9,11 @@ const LinkNav = props => {
 };
 
 class Navbar extends Component {
+
   render() {
     return (
       <div className="Navbar">
-        <nav className="navbar navbar-default">
+        <nav className="navbar navbar-default" style={{ margin : "0" }}>
           <div className="container-fluid">
             <div className="navbar-header">
               <div className="navbar-brand">Hitos API</div>
@@ -21,10 +22,6 @@ class Navbar extends Component {
               <LinkNav path={Paths.Links.Landing} text="Landing" />
               <LinkNav path={Paths.Links.Login} text="Login" />
               <LinkNav path={Paths.Links.SignUp} text="Sign Up" />
-              <LinkNav path={Paths.Links.Milestones} text="Milestone" />
-              <LinkNav path={Paths.Links.Search} text="Search" />
-              <LinkNav path={Paths.Links.Profile} text="Profile" />
-              <LinkNav path={Paths.Links.CreatingMillestone} text="Create Milestone" />
             </ul>
           </div>
         </nav>

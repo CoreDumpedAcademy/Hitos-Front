@@ -3,7 +3,8 @@ import MilestoneList from "../../Components/MilestoneList";
 import axios from "axios";
 import Paths from "../../Paths/Paths";
 import SearchByCathegory from "../../Components/SearchByCathegory.js"
-import { Button, FormGroup, FormControl } from "react-bootstrap";
+import { Button, FormGroup, FormControl, Form, ControlLabel } from "react-bootstrap";
+
 //import SearchBar from "../../Components/searchBar"
 
 class Search extends Component {
@@ -37,6 +38,20 @@ class Search extends Component {
       data: data,
     });
   }
+
+  /*
+    <form>
+          <FormGroup controlId="formInlineName">
+            <ControlLabel>Name</ControlLabel>{' '}
+            <FormControl type="text" placeholder="Jane Doe" />
+          </FormGroup>{' '}
+          <FormGroup controlId="formInlineEmail">
+            <ControlLabel>Email</ControlLabel>{' '}
+            <SearchByCathegory onSubmit={ this.handleSubmitCathegory }/>
+          </FormGroup>{' '}
+          <Button type="submit">Send invitation</Button>
+        </form>
+  */
 
   render() {
     return (
