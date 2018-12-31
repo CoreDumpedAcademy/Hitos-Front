@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import MilestoneList from "../../Components/MilestoneList";
 import axios from "axios";
 import Paths from "../../Paths/Paths";
-import { Button, FormGroup, FormControl } from "react-bootstrap";
+import SearchByCathegory from "../../Components/SearchByCathegory.js"
+import { Button, FormGroup, FormControl, Form, ControlLabel } from "react-bootstrap";
+
 //import SearchBar from "../../Components/searchBar"
 
 class Search extends Component {
@@ -20,7 +22,7 @@ class Search extends Component {
     });
   }
 
-  handleSubmit = async event => {
+  handleSubmitWeek = async event => {
     event.preventDefault();
 
     await axios.get(`${Paths.Api.getByWeek}/${this.state.searchMe}`).then(res => {
@@ -31,10 +33,30 @@ class Search extends Component {
     });
   }
 
+  handleSubmitCathegory = (data) => {
+    this.setState({
+      data: data,
+    });
+  }
+
+  /*
+    <form>
+          <FormGroup controlId="formInlineName">
+            <ControlLabel>Name</ControlLabel>{' '}
+            <FormControl type="text" placeholder="Jane Doe" />
+          </FormGroup>{' '}
+          <FormGroup controlId="formInlineEmail">
+            <ControlLabel>Email</ControlLabel>{' '}
+            <SearchByCathegory onSubmit={ this.handleSubmitCathegory }/>
+          </FormGroup>{' '}
+          <Button type="submit">Send invitation</Button>
+        </form>
+  */
+
   render() {
     return (
       <div className="Search">
-        <form className="navbar-form" role="search" onSubmit={this.handleSubmit}>
+        <form className="navbar-form" role="search" onSubmit={this.handleSubmitWeek}>
           <FormGroup controlId="searchMe" bsSize="large">
             <FormControl
               value={this.state.searchMe}
@@ -51,6 +73,7 @@ class Search extends Component {
           </FormGroup>
           
         </form>
+        <SearchByCathegory onSubmit={ this.handleSubmitCathegory }/>
         <div>
           <MilestoneList data={this.state.data} />
         </div>

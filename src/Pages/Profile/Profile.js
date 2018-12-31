@@ -15,11 +15,19 @@ class Profile extends Component {
 	}
 
 	componentDidMount() {
+		var tempList = [];
+		// Use this with your username
+		// localStorage.setItem('user', 'LordMascachapas');
 		axios.get(`${Paths.Api.getByName}/${localStorage.getItem('user')}`)
 		.then(res => {
+			for(var i = 0; i < res.data[0].milestonesCollection.length; i++) {
+				tempList[i] = res.data[0].milestonesCollection[i].milestone;
+				tempList[i].status = res.data[0].milestonesCollection[i].status;
+			}
 			this.setState({
-				user: res.data,
-				isLoaded: true
+				user: res.data[0],
+				milestones: tempList,
+				isLoaded: true,
 			});
 		});
 	}
@@ -49,7 +57,7 @@ class Profile extends Component {
 			return (
 				<div className="Profile">
 					{this.renderUD(this.state.user)}
-					{this.renderML(this.state.user.milestonesCollection)}
+					{this.renderML(this.state.milestones)}
 				</div>
 			);
 		} else {

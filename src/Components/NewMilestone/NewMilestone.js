@@ -6,6 +6,8 @@ import SelectField from "../SelectField.js"
 import "react-dropdown/style.css";
 import "./NewMilestone.css";
 
+import NewAlert from "../NewAlert";
+
 const TextInput = props => {
   return (
     <FormGroup controlId={props.id} bsSize="large">
@@ -61,7 +63,9 @@ class NewMilestone extends Component {
       description: "",
       week: 1,
       category: "",
-      difficulty: ""
+      level: "",
+      isOpen: false,
+      alertMessage: "Error"
     };
 
     axios.get(Paths.Api.getApiEnumerator).then(res => {
@@ -85,8 +89,8 @@ class NewMilestone extends Component {
       description: this.state.description,
       week: this.state.week,
       category: this.state.category,
-      difficulty: this.state.difficulty,
-      author: "5c17d315f6abb6169c65f32a"
+      level: this.state.level,
+      author: localStorage.getItem('id')
     };
 
     await axios.post(Paths.Api.getMilestones, { 
@@ -94,22 +98,29 @@ class NewMilestone extends Component {
       description: milestone.description,
       week: milestone.week,
       category: milestone.category,
-      difficulty: milestone.difficulty,
+      level: milestone.level,
       author: milestone.author })
       .then(res => {
         console.log(res);
       })
       .catch(error => {
-        console.log(error.response);
-        //this.toggleModal();
+        this.setState({
+          alertMessage: error.response.data.message
+        });
+        this.toggleAlert();
       });
-
-    console.log(this.state);
   };
+
+  toggleAlert = () => {
+    this.setState({
+      isOpen: true
+    });
+  }
 
   render() {
     return (
       <div className="NewMilestone">
+        <NewAlert isOpen={this.state.isOpen} text={this.state.alertMessage}/>
         <h1>New Milestone</h1>
         <form onSubmit={this.handleSubmit}>
           <TextInput
@@ -137,7 +148,7 @@ class NewMilestone extends Component {
           />
           <SelectField
             title="Difficulty:"
-            id="difficulty"
+            id="level"
             placeholder="Select a difficulty"
             options={this.state.enumerator.difficulty}
             onChange={this.handleChange}
