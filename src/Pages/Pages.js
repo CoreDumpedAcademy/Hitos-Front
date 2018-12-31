@@ -11,7 +11,6 @@ import Milestones from "./Milestones/Milestones";
 import Profile from "./Profile/Profile";
 import Search from "./Search/Search";
 import SignUp from "./SignUp/SignUp";
-import App from "../App";
 import CreatingMillestone from "./CreatingMilestone/CreatingMillestone";
 
 import Paths from "../Paths/Paths";
@@ -24,9 +23,12 @@ import Navbar2 from "../Components/Navbar2";
  * All routes go here.
  * Don't forget to import the components above after adding new route.
  */
+
+
 class Pages extends Component {
+
   render() {
-    if(localStorage.getItem("status")=="log")
+    if(localStorage.getItem("status")==="log")
       return (
         <div>
         <main>

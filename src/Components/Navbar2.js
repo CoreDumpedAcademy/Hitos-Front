@@ -23,7 +23,7 @@ class Navbar2 extends Component {
   render() {
     return (
       <div className="Navbar2">
-        <nav className="navbar navbar-default">
+        <nav className="navbar navbar-default" >
           <div className="container-fluid">
             <div className="navbar-header">
               <div className="navbar-brand">Hitos API</div>

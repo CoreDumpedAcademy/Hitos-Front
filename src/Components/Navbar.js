@@ -9,10 +9,11 @@ const LinkNav = props => {
 };
 
 class Navbar extends Component {
+
   render() {
     return (
       <div className="Navbar">
-        <nav className="navbar navbar-default">
+        <nav className="navbar navbar-default" style={{ margin : "0" }}>
           <div className="container-fluid">
             <div className="navbar-header">
               <div className="navbar-brand">Hitos API</div>

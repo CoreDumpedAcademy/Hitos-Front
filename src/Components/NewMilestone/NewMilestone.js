@@ -6,6 +6,8 @@ import SelectField from "../SelectField.js"
 import "react-dropdown/style.css";
 import "./NewMilestone.css";
 
+import NewAlert from "../NewAlert";
+
 const TextInput = props => {
   return (
     <FormGroup controlId={props.id} bsSize="large">
@@ -61,7 +63,9 @@ class NewMilestone extends Component {
       description: "",
       week: 1,
       category: "",
-      level: ""
+      level: "",
+      isOpen: false,
+      alertMessage: "Error"
     };
 
     axios.get(Paths.Api.getApiEnumerator).then(res => {
@@ -100,16 +104,23 @@ class NewMilestone extends Component {
         console.log(res);
       })
       .catch(error => {
-        console.log(error.response);
-        //this.toggleModal();
+        this.setState({
+          alertMessage: error.response.data.message
+        });
+        this.toggleAlert();
       });
-
-    console.log(this.state);
   };
+
+  toggleAlert = () => {
+    this.setState({
+      isOpen: true
+    });
+  }
 
   render() {
     return (
       <div className="NewMilestone">
+        <NewAlert isOpen={this.state.isOpen} text={this.state.alertMessage}/>
         <h1>New Milestone</h1>
         <form onSubmit={this.handleSubmit}>
           <TextInput
