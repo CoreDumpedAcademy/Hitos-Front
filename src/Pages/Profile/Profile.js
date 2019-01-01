@@ -18,6 +18,7 @@ class Profile extends Component {
 		var tempList = [];
 		// Use this with your username
 		// localStorage.setItem('user', 'LordMascachapas');
+		console.log(`${Paths.Api.getByName}/${localStorage.getItem('user')}`)
 		axios.get(`${Paths.Api.getByName}/${localStorage.getItem('user')}`)
 		.then(res => {
 			for(var i = 0; i < res.data[0].milestonesCollection.length; i++) {
