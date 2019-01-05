@@ -4,13 +4,13 @@ import "./index.css";
 import * as serviceWorker from "./serviceWorker";
 
 // Imports for routing
-import Pages from "./Pages/Pages";
+import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.render(
   <BrowserRouter>
     <div>
-      <Pages />
+      <App />
     </div>
   </BrowserRouter>,
   document.getElementById("root")
