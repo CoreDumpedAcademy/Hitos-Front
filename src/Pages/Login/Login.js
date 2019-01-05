@@ -5,8 +5,6 @@ import {
   Col
 } from "react-bootstrap";
 
-import "./Login.css";
-
 import LoginCmp from "../../Components/Login/Login";
 import Landing from "../../Components/Landing/Landing";
 
