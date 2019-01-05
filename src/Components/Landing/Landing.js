@@ -6,11 +6,7 @@ class Landing extends Component {
   render() {
     return (
       <div className="Landing">
-        <header className="App-header">
-          <img src={HACK} className="App-logo" alt="logo" />
-          <br />
-        </header>
-        <footer />
+        <img src={HACK} className="App-logo" alt="logo" />
       </div>
     );
   }

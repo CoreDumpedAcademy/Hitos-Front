@@ -1,11 +1,20 @@
 import React, { Component } from "react";
-import { Button, FormGroup, FormControl, ControlLabel} from "react-bootstrap";
+import {
+  Button,
+  FormGroup,
+  FormControl,
+  ControlLabel,
+  Grid,
+  Row,
+  Col
+} from "react-bootstrap";
 import axios from "axios";
 import "./Login.css";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import Paths from "../../Paths/Paths";
 
 import NewAlert from "../../Components/NewAlert";
+import Landing from "../../Components/Landing/Landing";
 
 export default class Login extends Component {
   constructor(props) {
@@ -27,7 +36,7 @@ export default class Login extends Component {
     this.setState({
       [event.target.id]: event.target.value
     });
-  }
+  };
 
   handleSubmit = async event => {
     event.preventDefault();
@@ -37,16 +46,20 @@ export default class Login extends Component {
       password: this.state.password
     };
 
-    await axios.post(Paths.Api.Login, { userName: user.userName, password: user.password })
+    await axios
+      .post(Paths.Api.Login, {
+        userName: user.userName,
+        password: user.password
+      })
       .then(res => {
-        localStorage.setItem('myToken', res.data.token);
-        localStorage.setItem('user', user.userName);
-        localStorage.setItem('id', res.data.id);
-        localStorage.setItem('status', "log");
+        localStorage.setItem("myToken", res.data.token);
+        localStorage.setItem("user", user.userName);
+        localStorage.setItem("id", res.data.id);
+        localStorage.setItem("status", "log");
         console.log(res);
         console.log(res.status);
-        console.log(localStorage.getItem('user'));
-        if(res.status===200)window.location.href = Paths.Links.Profile;
+        console.log(localStorage.getItem("user"));
+        if (res.status === 200) window.location.href = Paths.Links.Profile;
         else this.toggleAlert();
       })
       .catch(error => {
@@ -56,14 +69,13 @@ export default class Login extends Component {
         });
         this.toggleAlert();
       });
-  }
+  };
 
   toggleAlert = () => {
     this.setState({
       isOpen: true
     });
-  }
-
+  };
 
   /*componentDidMount(){
     const token=localStorage.getItem('myToken');
@@ -82,39 +94,53 @@ export default class Login extends Component {
   render() {
     return (
       <div className="Login">
-        <NewAlert isOpen={this.state.isOpen} text={this.state.alertMessage}/>
-        <h1>Login</h1>
-        <form onSubmit={this.handleSubmit}>
-          <FormGroup controlId="userName" bsSize="large">
-            <ControlLabel>User Name</ControlLabel>
-            <FormControl
-              autoFocus
-              type="text"
-              value={this.state.userName}
-              onChange={this.handleChange}
-            />
-          </FormGroup>
-          <FormGroup controlId="password" bsSize="large">
-            <ControlLabel>Password</ControlLabel>
-            <FormControl
-              value={this.state.password}
-              onChange={this.handleChange}
-              type="password"
-            />
-          </FormGroup>
-          <Button
-            block
-            bsSize="large"
-            disabled={!this.validateForm()}
-            type="submit"
-          >
-            Login
-          </Button>
+        <Grid>
+          <Row>
+            <Col xs={12} md={6}>
+              <Landing />
+            </Col>
+            <Col xs={12} md={6}>
+              <div className="col-sm">
+                <NewAlert
+                  isOpen={this.state.isOpen}
+                  text={this.state.alertMessage}
+                />
+                <h1>Login</h1>
+                <form onSubmit={this.handleSubmit}>
+                  <FormGroup controlId="userName" bsSize="large">
+                    <ControlLabel>User Name</ControlLabel>
+                    <FormControl
+                      autoFocus
+                      type="text"
+                      value={this.state.userName}
+                      onChange={this.handleChange}
+                    />
+                  </FormGroup>
+                  <FormGroup controlId="password" bsSize="large">
+                    <ControlLabel>Password</ControlLabel>
+                    <FormControl
+                      value={this.state.password}
+                      onChange={this.handleChange}
+                      type="password"
+                    />
+                  </FormGroup>
+                  <Button
+                    block
+                    bsSize="large"
+                    disabled={!this.validateForm()}
+                    type="submit"
+                  >
+                    Login
+                  </Button>
 
-        
-          <p>Or <Link to={Paths.Links.SignUp}>Sign up</Link></p>
-
-        </form>
+                  <p>
+                    Or <Link to={Paths.Links.SignUp}>Sign up</Link>
+                  </p>
+                </form>
+              </div>
+            </Col>
+          </Row>
+        </Grid>
       </div>
     );
   }
