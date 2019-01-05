@@ -7,7 +7,6 @@ const APIEnumerator = '/enum';
 
 const Paths = {
   Links: {
-    Landing: "/landing",
     Login: "/login",
     Milestones: "/milestones",
     Profile: "/profile",

@@ -33,10 +33,10 @@ class SearchByCathegory extends Component{
 	}
 
 	render() {
-		var styleAll = {
+		/*var styleAll = {
 			margin: "0 auto",
 			width: "480px"
-		}
+		}*/
 		return(
 			<div className="SearchByCategory">
 				<form>

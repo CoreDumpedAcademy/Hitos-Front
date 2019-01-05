@@ -19,7 +19,6 @@ class Navbar extends Component {
               <div className="navbar-brand">Hitos API</div>
             </div>
             <ul className="nav navbar-nav">
-              <LinkNav path={Paths.Links.Landing} text="Landing" />
               <LinkNav path={Paths.Links.Login} text="Login" />
               <LinkNav path={Paths.Links.SignUp} text="Sign Up" />
             </ul>

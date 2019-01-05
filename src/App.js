@@ -5,18 +5,17 @@ import { Route } from "react-router-dom";
  * Import all page components here
  */
 
-import Landing from "./Landing/Landing";
-import Login from "./Login/Login";
-import Milestones from "./Milestones/Milestones";
-import Profile from "./Profile/Profile";
-import Search from "./Search/Search";
-import SignUp from "./SignUp/SignUp";
-import CreatingMillestone from "./CreatingMilestone/CreatingMillestone";
+import Login from "./Pages/Login/Login";
+import Milestones from "./Pages/Milestones/Milestones";
+import Profile from "./Pages/Profile/Profile";
+import Search from "./Pages/Search/Search";
+import SignUp from "./Pages/SignUp/SignUp";
+import CreatingMillestone from "./Pages/CreatingMilestone/CreatingMillestone";
 
-import Paths from "../Paths/Paths";
+import Paths from "./Paths/Paths";
 
-import Navbar from "../Components/Navbar";
-import Navbar2 from "../Components/Navbar2";
+import Navbar from "./Components/Navbar";
+import Navbar2 from "./Components/Navbar2";
 
 /**
  * All routes go here.
@@ -47,7 +46,6 @@ class App extends Component {
         <div>
           <main>
             <Navbar />
-            <Route path={Paths.Links.Landing} component={Landing} />
             <Route exact path={Paths.Links.Login} component={Login} />
             <Route path={Paths.Links.SignUp} component={SignUp} />
           </main>
