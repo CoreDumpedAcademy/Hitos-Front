@@ -18,7 +18,6 @@ class SearchByWeek extends Component {
   };
 
   handleSubmit = event => {
-    console.log(`${Paths.Api.getByWeek}/${this.state.SelectedWeek}`);
     axios.get(`${Paths.Api.getByWeek}/${this.state.SelectedWeek}`).then(res => {
       this.props.onSubmit(res.data.milestones);
 	});

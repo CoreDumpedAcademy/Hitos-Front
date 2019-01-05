@@ -7,12 +7,11 @@ const APIEnumerator = '/enum';
 
 const Paths = {
   Links: {
-    Login: "/login",
     Milestones: "/milestones",
     Profile: "/profile",
     Search: "/search",
     SignUp: "/signup",
-    App: "/",
+    Login: "/",
     CreatingMillestone: '/creatingmilestone'
   },
   Api: {
@@ -23,7 +22,8 @@ const Paths = {
     getApiEnumerator: `${API}${APIEnumerator}`,
     getByName: `${API}${User}/byName`,
     getMsByCategory: `${API}${Milestone}/byCategory`,
-  }
+  },
+  URL: API
 };
 
 export default Paths;

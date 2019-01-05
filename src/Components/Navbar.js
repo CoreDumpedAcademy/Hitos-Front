@@ -3,7 +3,10 @@ import { Link } from "react-router-dom";
 import Paths from "../Paths/Paths";
 
 const LinkNav = props => {
-  const itemStyle = (window.location.href.includes(props.path) ? "active " : "") + "nav_item";
+  const splittedUrl = window.location.href.split("/")
+  const currentUrl = `/${splittedUrl[splittedUrl.length-1]}`
+  
+  const itemStyle = ( props.path === currentUrl ? "active " : "") + "nav_item";
 
   return <li className={itemStyle}><Link to={props.path}>{props.text}</Link></li>
 };

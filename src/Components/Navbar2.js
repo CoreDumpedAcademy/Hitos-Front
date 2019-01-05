@@ -2,9 +2,12 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Paths from "../Paths/Paths";
 
-const LinkNav2 = props => {
-  const itemStyle = (window.location.href.includes(props.path) ? "active " : "") + "nav_item";
-  if(props.path.includes(Paths.Links.Login))
+const LinkNav2 = props => {  
+  const splittedUrl = window.location.href.split("/")
+  const currentUrl = `/${splittedUrl[splittedUrl.length-1]}`
+  
+  const itemStyle = ( props.path === currentUrl ? "active " : "") + "nav_item";
+  if(props.path === Paths.Links.Login)
     return <li className={itemStyle}><Link to={props.path} onClick={() => localStorage.setItem("status", "")}>{props.text}</Link></li>
 
   else

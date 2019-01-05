@@ -33,11 +33,10 @@ class App extends Component {
             <Route path={Paths.Links.Profile} component={Profile} />
             <Route path={Paths.Links.Search} component={Search} />
             <Route
-              exact
               path={Paths.Links.CreatingMillestone}
               component={CreatingMillestone}
             />
-            <Route path={Paths.Links.Login} component={Login} />
+            <Route exact path={Paths.Links.Login} component={Login} />
           </main>
         </div>
       );
