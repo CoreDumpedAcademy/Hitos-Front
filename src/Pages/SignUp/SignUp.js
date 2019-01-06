@@ -58,6 +58,7 @@ export default class SignUp extends Component {
       })
       .then(res => {
         console.log(res);
+        this.closeAlert();
       })
       .catch(error => {
         console.log(error.response);
@@ -71,6 +72,12 @@ export default class SignUp extends Component {
   toggleAlert = () => {
     this.setState({
       isOpen: true
+    });
+  }
+
+  closeAlert = () => {
+    this.setState({
+      isOpen: false
     });
   }
 

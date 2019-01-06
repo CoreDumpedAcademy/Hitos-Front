@@ -9,6 +9,7 @@ import LoginCmp from "../../Components/Login/Login";
 import Landing from "../../Components/Landing/Landing";
 
 export default class Login extends Component {
+
   render() {
     return (
       <div className="Login">

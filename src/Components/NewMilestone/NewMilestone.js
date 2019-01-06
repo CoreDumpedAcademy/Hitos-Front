@@ -102,6 +102,7 @@ class NewMilestone extends Component {
       author: milestone.author })
       .then(res => {
         console.log(res);
+        this.closeAlert();
       })
       .catch(error => {
         this.setState({
@@ -114,6 +115,12 @@ class NewMilestone extends Component {
   toggleAlert = () => {
     this.setState({
       isOpen: true
+    });
+  }
+
+  closeAlert = () => {
+    this.setState({
+      isOpen: false
     });
   }
 
@@ -152,7 +159,7 @@ class NewMilestone extends Component {
             placeholder="Select a difficulty"
             options={this.state.enumerator.difficulty}
             onChange={this.handleChange}
-            value={this.state.difficutly}
+            value={this.state.level}
           />
           <TextArea
             id="description"
