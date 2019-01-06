@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from 'axios';
 import UserData from '../../Components/userData';
 import MilestoneList from '../../Components/MilestoneList';
-import Paths from "../../Paths/Paths";
+import Paths from "../../Dictionaries/Paths";
 
 class Profile extends Component {
 	constructor(props){

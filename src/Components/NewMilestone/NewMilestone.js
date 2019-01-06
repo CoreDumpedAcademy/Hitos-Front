@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import axios from "axios";
-import Paths from "../../Paths/Paths";
+import Paths from "../../Dictionaries/Paths";
 import SelectField from "../SelectField.js"
 import "react-dropdown/style.css";
 import "./NewMilestone.css";

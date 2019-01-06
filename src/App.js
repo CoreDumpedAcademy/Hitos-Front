@@ -12,7 +12,8 @@ import Search from "./Pages/Search/Search";
 import SignUp from "./Pages/SignUp/SignUp";
 import CreatingMillestone from "./Pages/CreatingMilestone/CreatingMillestone";
 
-import Paths from "./Paths/Paths";
+import Paths from "./Dictionaries/Paths";
+import Names from "./Dictionaries/TitlesAndNames";
 
 import Navbar from "./Components/Navbar";
 import Navbar2 from "./Components/Navbar2";
@@ -23,6 +24,10 @@ import Navbar2 from "./Components/Navbar2";
  */
 
 class App extends Component {
+  componentDidMount() {
+    document.title = Names.AppTitle;
+  }
+
   render() {
     if (localStorage.getItem("status") === "log")
       return (

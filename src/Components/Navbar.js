@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import Paths from "../Paths/Paths";
+
+import Paths from "../Dictionaries/Paths";
+import Names from "../Dictionaries/TitlesAndNames";
 
 const LinkNav = props => {
   const splittedUrl = window.location.href.split("/")
@@ -19,7 +21,7 @@ class Navbar extends Component {
         <nav className="navbar navbar-default" style={{ margin : "0" }}>
           <div className="container-fluid">
             <div className="navbar-header">
-              <div className="navbar-brand">Milestone-mgt</div>
+              <div className="navbar-brand">{Names.AppTitle}</div>
             </div>
             <ul className="nav navbar-nav">
               <LinkNav path={Paths.Links.Login} text="Login" />

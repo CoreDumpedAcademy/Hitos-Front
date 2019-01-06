@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import "./SignUp.css";
 import axios from "axios";
-import Paths from "../../Paths/Paths";
+import Paths from "../../Dictionaries/Paths";
 
 import NewAlert from "../../Components/NewAlert";
 

@@ -7,7 +7,7 @@ import "./Login.css";
 
 import NewAlert from "../../Components/NewAlert";
 
-import Paths from "../../Paths/Paths";
+import Paths from "../../Dictionaries/Paths";
 
 export default class Login extends Component {
   constructor(props) {

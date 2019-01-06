@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import MilestoneList from "../../Components/MilestoneList";
 import axios from "axios";
-import Paths from "../../Paths/Paths";
+import Paths from "../../Dictionaries/Paths";
 
 class Milestones extends Component {
     constructor(props) {

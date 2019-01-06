@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import Paths from "../Paths/Paths";
+import Paths from "../Dictionaries/Paths";
 import { Button, FormGroup, FormControl } from "react-bootstrap";
 
 class SearchByWeek extends Component {

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import Paths from "../Paths/Paths";
+import Paths from "../Dictionaries/Paths";
 
 const LinkLabel = (props) => {
     return (
