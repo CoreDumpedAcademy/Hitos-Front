@@ -1,6 +1,7 @@
 @media all {
   .App {
     text-align: center;
+    margin: 20px;
   }
 
   .App-logo {
@@ -15,5 +16,10 @@
     justify-content: center;
     font-size: calc(10px + 2vmin);
     color: white;
+  }
+
+  h3 {
+    margin: 20px;
+    text-align: center;
   }
 }

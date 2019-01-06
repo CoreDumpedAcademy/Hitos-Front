@@ -19,7 +19,7 @@ class Navbar extends Component {
         <nav className="navbar navbar-default" style={{ margin : "0" }}>
           <div className="container-fluid">
             <div className="navbar-header">
-              <div className="navbar-brand">Hitos API</div>
+              <div className="navbar-brand">Milestone-mgt</div>
             </div>
             <ul className="nav navbar-nav">
               <LinkNav path={Paths.Links.Login} text="Login" />

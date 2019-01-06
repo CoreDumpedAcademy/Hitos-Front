@@ -7,6 +7,7 @@ class Landing extends Component {
     return (
       <div className="Landing">
         <img src={HACK} className="App-logo" alt="logo" />
+      	<h3>Welcome to Milestone-mgt a web to manage the weekly milestones of Core Dumped's Hackathon Team</h3>
       </div>
     );
   }
