@@ -84,6 +84,13 @@ class NewMilestone extends Component {
   handleSubmit = async event => {
     event.preventDefault();
 
+    console.log(this.state.level);
+
+    
+
+    console.log(this.state.level);
+        
+
     const milestone = {
       title: this.state.title,
       description: this.state.description,
@@ -103,6 +110,11 @@ class NewMilestone extends Component {
       .then(res => {
         console.log(res);
         this.closeAlert();
+        this.setState({
+          title: "",
+          description: "",
+          week: 1
+        });
       })
       .catch(error => {
         this.setState({

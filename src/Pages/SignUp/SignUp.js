@@ -59,6 +59,7 @@ export default class SignUp extends Component {
       .then(res => {
         console.log(res);
         this.closeAlert();
+        window.location.href = Paths.Links.Login;
       })
       .catch(error => {
         console.log(error.response);
