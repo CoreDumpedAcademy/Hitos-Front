@@ -12,7 +12,7 @@ const Paths = {
     Search: "/search",
     SignUp: "/signup",
     Login: "/",
-    CreatingMillestone: '/creatingmilestone'
+    CreatingMilestone: '/creatingmilestone'
   },
   Api: {
     Login: `${API}${User}/log`,

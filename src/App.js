@@ -10,13 +10,12 @@ import Milestones from "./Pages/Milestones/Milestones";
 import Profile from "./Pages/Profile/Profile";
 import Search from "./Pages/Search/Search";
 import SignUp from "./Pages/SignUp/SignUp";
-import CreatingMillestone from "./Pages/CreatingMilestone/CreatingMillestone";
+import CreatingMilestone from "./Pages/CreatingMilestone/CreatingMilestone";
 
 import Paths from "./Dictionaries/Paths";
 import Names from "./Dictionaries/TitlesAndNames";
 
 import Navbar from "./Components/Navbar";
-import Navbar2 from "./Components/Navbar2";
 
 /**
  * All routes go here.
@@ -24,6 +23,43 @@ import Navbar2 from "./Components/Navbar2";
  */
 
 class App extends Component {
+  constructor(props) {
+      super(props);
+      this.state = {
+          data: [{
+            path: Paths.Links.Login,
+            text: Names.LinkNames.Login
+          },
+          {
+            path: Paths.Links.SignUp,
+            text: Names.LinkNames.SignUp
+          }],
+
+          data2: [{
+            path: Paths.Links.Profile,
+            text: Names.LinkNames.Profile
+          },
+          {
+            path: Paths.Links.Milestones,
+            text: Names.LinkNames.Milestones
+          },
+          {
+            path: Paths.Links.Search,
+            text: Names.LinkNames.Search
+          },
+          {
+            path: Paths.Links.CreatingMilestone,
+            text: Names.LinkNames.CreatingMilestone
+          },
+          {
+            path: Paths.Links.Login,
+            text: Names.LinkNames.SignOut,
+            change: 1
+          }]
+      };
+  }
+
+
   componentDidMount() {
     document.title = Names.AppTitle;
   }
@@ -33,14 +69,11 @@ class App extends Component {
       return (
         <div>
           <main>
-            <Navbar2 />
+            <Navbar data={this.state.data2}/>
             <Route path={Paths.Links.Milestones} component={Milestones} />
             <Route path={Paths.Links.Profile} component={Profile} />
             <Route path={Paths.Links.Search} component={Search} />
-            <Route
-              path={Paths.Links.CreatingMillestone}
-              component={CreatingMillestone}
-            />
+            <Route path={Paths.Links.CreatingMilestone} component={CreatingMilestone} />
             <Route exact path={Paths.Links.Login} component={Login} />
           </main>
         </div>
@@ -49,7 +82,7 @@ class App extends Component {
       return (
         <div>
           <main>
-            <Navbar />
+            <Navbar data={this.state.data}/>
             <Route exact path={Paths.Links.Login} component={Login} />
             <Route path={Paths.Links.SignUp} component={SignUp} />
           </main>

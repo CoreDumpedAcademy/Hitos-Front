@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-import Paths from "../Dictionaries/Paths";
 import Names from "../Dictionaries/TitlesAndNames";
 
 const LinkNav = props => {
@@ -10,10 +9,30 @@ const LinkNav = props => {
   
   const itemStyle = ( props.path === currentUrl ? "active " : "") + "nav_item";
 
-  return <li className={itemStyle}><Link to={props.path}>{props.text}</Link></li>
+  if(props.change)
+    return <li className={itemStyle}><Link to={props.path} onClick={() => localStorage.setItem("status", "")}>{props.text}</Link></li>
+
+  else
+    return <li className={itemStyle}><Link to={props.path}>{props.text}</Link></li>
 };
 
 class Navbar extends Component {
+  renderNav(datas) {
+    if (datas.length > 0) {
+      return (
+          <ul className="nav navbar-nav">
+            {datas.map((data, i) => (
+              <LinkNav
+                key={i}
+                path={data.path}
+                text={data.text}
+                change={data.change}
+              />
+            ))}
+          </ul>
+      );
+        }
+  }
 
   render() {
     return (
@@ -23,10 +42,7 @@ class Navbar extends Component {
             <div className="navbar-header">
               <div className="navbar-brand">{Names.AppTitle}</div>
             </div>
-            <ul className="nav navbar-nav">
-              <LinkNav path={Paths.Links.Login} text="Login" />
-              <LinkNav path={Paths.Links.SignUp} text="Sign Up" />
-            </ul>
+              {this.renderNav(this.props.data)}
           </div>
         </nav>
       </div>

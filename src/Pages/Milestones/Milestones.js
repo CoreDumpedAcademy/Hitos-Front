@@ -18,6 +18,7 @@ class Milestones extends Component {
                 data: res.data.milestones,
                 isLoaded: true
             });
+            console.log(this.state.data);
 	   });
     }
 
