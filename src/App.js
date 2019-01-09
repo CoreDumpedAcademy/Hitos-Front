@@ -24,65 +24,75 @@ import Navbar from "./Components/Navbar";
 
 class App extends Component {
   constructor(props) {
-      super(props);
-      this.state = {
-          data: [{
-            path: Paths.Links.Login,
-            text: Names.LinkNames.Login
-          },
-          {
-            path: Paths.Links.SignUp,
-            text: Names.LinkNames.SignUp
-          }],
+    super(props);
+    this.state = {
+      data: [
+        {
+          path: Paths.Links.Login,
+          text: Names.LinkNames.Login
+        },
+        {
+          path: Paths.Links.SignUp,
+          text: Names.LinkNames.SignUp
+        }
+      ],
 
-          data2: [{
-            path: Paths.Links.Profile,
-            text: Names.LinkNames.Profile
-          },
-          {
-            path: Paths.Links.Milestones,
-            text: Names.LinkNames.Milestones
-          },
-          {
-            path: Paths.Links.Search,
-            text: Names.LinkNames.Search
-          },
-          {
-            path: Paths.Links.CreatingMilestone,
-            text: Names.LinkNames.CreatingMilestone
-          },
-          {
-            path: Paths.Links.Login,
-            text: Names.LinkNames.SignOut,
-            change: 1
-          }]
-      };
+      data2: [
+        {
+          path: Paths.Links.Profile,
+          text: Names.LinkNames.Profile
+        },
+        {
+          path: Paths.Links.Milestones,
+          text: Names.LinkNames.Milestones
+        },
+        {
+          path: Paths.Links.Search,
+          text: Names.LinkNames.Search
+        },
+        {
+          path: Paths.Links.CreatingMilestone,
+          text: Names.LinkNames.CreatingMilestone
+        },
+        {
+          path: Paths.Links.Login,
+          text: Names.LinkNames.SignOut,
+          change: 1
+        }
+      ]
+    };
   }
-
 
   componentDidMount() {
     document.title = Names.AppTitle;
+
+    if (localStorage.getItem("w") !== "true") {
+      this.setState({
+        data2: this.state.data2.filter(function(el) {
+          return el.path !== Paths.Links.CreatingMilestone;
+        })
+      });
+    }
+  }
+
+  renderNav() {
+    if (localStorage.getItem("status") === "log")
+      return <Navbar data={this.state.data2} />;
+    else return <Navbar data={this.state.data} />;
   }
 
   render() {
-    if (localStorage.getItem("status") === "log")
       return (
         <div>
           <main>
-            <Navbar data={this.state.data2}/>
+            {this.renderNav()}
             <Route path={Paths.Links.Milestones} component={Milestones} />
             <Route path={Paths.Links.Profile} component={Profile} />
             <Route path={Paths.Links.Search} component={Search} />
-            <Route path={Paths.Links.CreatingMilestone} component={CreatingMilestone} />
-            <Route exact path={Paths.Links.Login} component={Login} />
-          </main>
-        </div>
-      );
-    else
-      return (
-        <div>
-          <main>
-            <Navbar data={this.state.data}/>
+            <Route
+              path={Paths.Links.CreatingMilestone}
+              component={CreatingMilestone}
+            />
             <Route exact path={Paths.Links.Login} component={Login} />
             <Route path={Paths.Links.SignUp} component={SignUp} />
           </main>

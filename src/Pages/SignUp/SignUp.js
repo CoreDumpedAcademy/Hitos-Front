@@ -20,6 +20,10 @@ export default class SignUp extends Component {
       alertMessage: "Error"
     };
   }
+  
+  componentDidMount() {
+    localStorage.setItem("status", "");
+  }
 
   validateForm() {
     return (

@@ -51,6 +51,7 @@ export default class Login extends Component {
         password: user.password
       })
       .then(res => {
+        localStorage.setItem("w", res.data.role)
         localStorage.setItem("myToken", res.data.token);
         localStorage.setItem("user", user.userName);
         localStorage.setItem("id", res.data.id);
@@ -58,6 +59,7 @@ export default class Login extends Component {
         console.log(res);
         console.log(res.status);
         console.log(localStorage.getItem("user"));
+        console.log(localStorage.getItem("w"));
         if (res.status === 200) window.location.href = Paths.Links.Profile;
         else this.toggleAlert();
       })

@@ -9,6 +9,9 @@ import LoginCmp from "../../Components/Login/Login";
 import Landing from "../../Components/Landing/Landing";
 
 export default class Login extends Component {
+  componentDidMount() {
+    localStorage.setItem("status", "");
+  }
 
   render() {
     return (
