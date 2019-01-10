@@ -54,7 +54,37 @@ export default class SignUp extends Component {
       lastName: this.state.lastName
     };
 
-    await axios
+    if(this.state.isChecked){
+      let config = {
+        headers: {
+          authorization: this.state.adminPass
+        }
+      }
+
+      await axios
+      .post(`${Paths.Api.postAdmin}`, {
+        userName: user.userName,
+        password: user.password,
+        idTelegram: user.idTelegram,
+        firstName: user.firstName,
+        lastName: user.lastName
+      }, config)
+      .then(res => {
+        console.log(res);
+        this.closeAlert();
+        window.location.href = Paths.Links.Login;
+      })
+      .catch(error => {
+        console.log(error.response);
+        this.setState({
+          alertMessage: error.response.data.message
+        });
+        this.toggleAlert();
+      });
+    }
+
+    else{
+      await axios
       .post(`${Paths.Api.getUsers}`, {
         userName: user.userName,
         password: user.password,
@@ -74,6 +104,7 @@ export default class SignUp extends Component {
         });
         this.toggleAlert();
       });
+    }
   };
 
   toggleAlert = () => {
