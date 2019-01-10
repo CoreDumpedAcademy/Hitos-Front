@@ -25,8 +25,8 @@ import Navbar from "./Components/Navbar";
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      data: [
+
+    var navData =[
         {
           path: Paths.Links.Login,
           text: Names.LinkNames.Login
@@ -34,10 +34,7 @@ class App extends Component {
         {
           path: Paths.Links.SignUp,
           text: Names.LinkNames.SignUp
-        }
-      ],
-
-      data2: [
+        },
         {
           path: Paths.Links.Profile,
           text: Names.LinkNames.Profile
@@ -59,6 +56,20 @@ class App extends Component {
           text: Names.LinkNames.SignOut,
           change: 1
         }
+      ]
+
+    this.state = {
+      data: [
+        navData[0],
+        navData[1]
+      ],
+
+      data2: [
+        navData[2],
+        navData[3],
+        navData[4],
+        navData[5],
+        navData[6]
       ]
     };
   }
