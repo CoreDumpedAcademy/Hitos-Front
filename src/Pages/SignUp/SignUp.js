@@ -17,7 +17,9 @@ export default class SignUp extends Component {
       idTelegram: "",
       password: "",
       isOpen: false,
-      alertMessage: "Error"
+      alertMessage: "Error",
+      isChecked: false,
+      adminPass: ""
     };
   }
   
@@ -86,7 +88,28 @@ export default class SignUp extends Component {
     });
   }
 
+  checkThis = event =>{
+    this.setState({
+      isChecked: !this.state.isChecked
+    });
+  }
+
   render() {
+    let adminPass;
+
+    if(this.state.isChecked)
+      adminPass = <FormGroup controlId="adminPass" bsSize="large">
+            <ControlLabel>AdminPass</ControlLabel>
+            <FormControl
+              value={this.state.adminPass}
+              onChange={this.handleChange}
+              type="password"
+            />
+          </FormGroup>;
+
+    else
+      adminPass = <br/>
+
     return (
       <div className="SignUp">
         <NewAlert isOpen={this.state.isOpen} text={this.state.alertMessage}/>
@@ -133,6 +156,8 @@ export default class SignUp extends Component {
               type="password"
             />
           </FormGroup>
+          <input type="checkbox" id="myCheck" onClick={this.checkThis}/>  Are you an Admin?
+          {adminPass}
           <Button
             block
             bsSize="large"
