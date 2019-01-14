@@ -26,50 +26,50 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    var navData =[
-        {
+    var navData ={
+        Login: {
           path: Paths.Links.Login,
           text: Names.LinkNames.Login
         },
-        {
+        SignUp: {
           path: Paths.Links.SignUp,
           text: Names.LinkNames.SignUp
         },
-        {
+        Profile: {
           path: Paths.Links.Profile,
           text: Names.LinkNames.Profile
         },
-        {
+        Milestones: {
           path: Paths.Links.Milestones,
           text: Names.LinkNames.Milestones
         },
-        {
+        Search: {
           path: Paths.Links.Search,
           text: Names.LinkNames.Search
         },
-        {
+        CreatingMilestone: {
           path: Paths.Links.CreatingMilestone,
           text: Names.LinkNames.CreatingMilestone
         },
-        {
+        SignOut: {
           path: Paths.Links.Login,
           text: Names.LinkNames.SignOut,
           change: 1
         }
-      ]
+      }
 
     this.state = {
       data: [
-        navData[0],
-        navData[1]
+        navData.Login,
+        navData.SignUp
       ],
 
       data2: [
-        navData[2],
-        navData[3],
-        navData[4],
-        navData[5],
-        navData[6]
+        navData.Profile,
+        navData.Milestones,
+        navData.Search,
+        navData.CreatingMilestone,
+        navData.SignOut
       ]
     };
   }
