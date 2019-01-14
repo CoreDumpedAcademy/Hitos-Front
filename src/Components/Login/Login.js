@@ -8,6 +8,7 @@ import "./Login.css";
 import NewAlert from "../../Components/NewAlert";
 
 import Paths from "../../Dictionaries/Paths";
+import Names from "../../Dictionaries/TitlesAndNames";
 
 export default class Login extends Component {
   constructor(props) {
@@ -51,15 +52,15 @@ export default class Login extends Component {
         password: user.password
       })
       .then(res => {
-        localStorage.setItem("w", res.data.role)
-        localStorage.setItem("myToken", res.data.token);
-        localStorage.setItem("user", user.userName);
-        localStorage.setItem("id", res.data.id);
-        localStorage.setItem("status", "log");
+        localStorage.setItem(Names.storageKeys.isAdminOrMentor, res.data.role)
+        localStorage.setItem(Names.storageKeys.Token, res.data.token);
+        localStorage.setItem(Names.storageKeys.User, user.userName);
+        localStorage.setItem(Names.storageKeys.MyId, res.data.id);
+        localStorage.setItem(Names.storageKeys.Status, "log");
         console.log(res);
         console.log(res.status);
-        console.log(localStorage.getItem("user"));
-        console.log(localStorage.getItem("w"));
+        console.log(localStorage.getItem(Names.storageKeys.User));
+        console.log(localStorage.getItem(Names.storageKeys.isAdminOrMentor));
         if (res.status === 200) window.location.href = Paths.Links.Profile;
         else this.toggleAlert();
       })
@@ -73,7 +74,7 @@ export default class Login extends Component {
   };
   
   /*componentDidMount(){
-    const token=localStorage.getItem('myToken');
+    const token=localStorage.getItem(Names.storageKeys.Token);
     axios.defaults.headers.common = {'authorization': "bearer " + token}
 
     axios.get('http://localhost:3000/api/private')

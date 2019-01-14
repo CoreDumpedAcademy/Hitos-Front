@@ -8,7 +8,14 @@ const names = {
 	    Login: "Login",
 	    CreatingMilestone: 'Create Milestone'
 	  },
-    AppTitle: "Milestones Management"
+	AppTitle: "Milestones Management",
+	storageKeys: {
+		User: "user",
+		Token: "myToken",
+		MyId: "id",
+		Status: "status",
+		isAdminOrMentor: "w"
+	}
 }
 
 export default names;

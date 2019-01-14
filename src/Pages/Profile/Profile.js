@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import axios from 'axios';
 import UserData from '../../Components/userData';
 import MilestoneList from '../../Components/MilestoneList';
+
 import Paths from "../../Dictionaries/Paths";
+import Names from "../../Dictionaries/TitlesAndNames";
 
 class Profile extends Component {
 	constructor(props){
@@ -18,7 +20,7 @@ class Profile extends Component {
 		var tempList = [];
 		// Use this with your username
 		// localStorage.setItem('user', 'LordMascachapas');
-		axios.get(`${Paths.Api.getByName}/${localStorage.getItem('user')}`)
+		axios.get(`${Paths.Api.getByName}/${localStorage.getItem(Names.storageKeys.User)}`)
 		.then(res => {
 			for(var i = 0; i < res.data[0].milestonesCollection.length; i++) {
 				tempList[i] = res.data[0].milestonesCollection[i].milestone;

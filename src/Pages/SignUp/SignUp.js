@@ -6,6 +6,8 @@ import Paths from "../../Dictionaries/Paths";
 
 import NewAlert from "../../Components/NewAlert";
 
+import Names from "../../Dictionaries/TitlesAndNames";
+
 export default class SignUp extends Component {
   constructor(props) {
     super(props);
@@ -24,7 +26,7 @@ export default class SignUp extends Component {
   }
   
   componentDidMount() {
-    localStorage.setItem("status", "");
+    localStorage.setItem(Names.storageKeys.Status, "");
   }
 
   validateForm() {

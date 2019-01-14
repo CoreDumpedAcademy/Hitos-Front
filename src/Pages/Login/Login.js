@@ -8,9 +8,11 @@ import {
 import LoginCmp from "../../Components/Login/Login";
 import Landing from "../../Components/Landing/Landing";
 
+import Names from "../../Dictionaries/TitlesAndNames";
+
 export default class Login extends Component {
   componentDidMount() {
-    localStorage.setItem("status", "");
+    localStorage.setItem(Names.storageKeys.Status, "");
   }
 
   render() {

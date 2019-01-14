@@ -10,7 +10,7 @@ const LinkNav = props => {
   const itemStyle = ( props.path === currentUrl ? "active " : "") + "nav_item";
 
   if(props.change)
-    return <li className={itemStyle}><Link to={props.path} onClick={() => localStorage.setItem("status", "")}>{props.text}</Link></li>
+    return <li className={itemStyle}><Link to={props.path} onClick={() => localStorage.setItem(Names.storageKeys.Status, "")}>{props.text}</Link></li>
 
   else
     return <li className={itemStyle}><Link to={props.path}>{props.text}</Link></li>
