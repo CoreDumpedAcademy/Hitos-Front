@@ -27,6 +27,7 @@ class SearchByCathegory extends Component{
 	}
 
 	handleSubmit = event => {
+		event.preventDefault();
 		axios.get(`${Paths.Api.getMsByCategory}/${this.state.SelectedCategory}`).then(res => {
 			this.props.onSubmit(res.data.milestones);
 		});
