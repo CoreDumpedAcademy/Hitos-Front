@@ -1,6 +1,11 @@
 import React from "react";
-import Milestone from "../Components/Milestone";
+import Milestone from "./Milestone/Milestone";
 import NoCoincidences from "../Components/NoCoincidences";
+import {
+  Grid,
+  Row,
+  Col
+} from "react-bootstrap";
 
 class MilestoneList extends React.Component {
   renderMS(datas) {
@@ -8,17 +13,19 @@ class MilestoneList extends React.Component {
       return (
         <div>
           {datas.map(data => (
-            <Milestone
-              key={data._id}
-              creation={data.creation}
-              title={data.title}
-              author={data.author.userName}
-              week={data.week}
-              description={data.description}
-              category={data.category}
-              level={data.level}
-              status={data.status}
-            />
+            <Col xs={12} md={4}>
+              <Milestone
+                key={data._id}
+                creation={data.creation}
+                title={data.title}
+                author={data.author.userName}
+                week={data.week}
+                description={data.description}
+                category={data.category}
+                level={data.level}
+                status={data.status}
+              />
+            </Col>
           ))}
         </div>
       );
@@ -30,7 +37,11 @@ class MilestoneList extends React.Component {
 	render(){
 		return(
 			<div className='MilestoneList'>
-				{this.renderMS(this.props.data)}
+      <Grid>
+          <Row>
+				    {this.renderMS(this.props.data)}
+          </Row>
+        </Grid>
 			</div>
 		);
 	};
