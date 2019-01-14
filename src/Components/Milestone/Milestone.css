@@ -1,0 +1,17 @@
+@media all {
+  .bodyColor {
+    background: #000;
+  }
+
+  .textSpacing {
+    padding: 10px 10px 0px 15px;
+  }
+
+  .headingColor {
+    background: #AAA !important;
+  }
+
+  .textColor {
+    color: #FFF;
+  }
+}
