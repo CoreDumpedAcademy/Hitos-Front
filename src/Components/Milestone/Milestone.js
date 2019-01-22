@@ -1,4 +1,5 @@
 import React from 'react';
+import {Button} from "react-bootstrap";
 
 import "./Milestone.css";
 
@@ -8,15 +9,25 @@ class Milestone extends React.Component{
 		return (date.toLocaleDateString());
 	}
 
-	render(){
+	handleSubmit = event => {
+		event.preventDefault();
+	}
 
+
+	render(){
         var status;
-        if(this.props.status)
-				status = ` || STATUS: ${this.props.status}`;
+        var mybutton;
+        if(this.props.status){
+        	status = ` || STATUS: ${this.props.status}`;
+        	mybutton = <Button class="inline" onClick={ this.handleSubmit }
+						bsSize="large"
+					>X</Button>
+        }
 		return(
 			<div className='Milestone panel panel-default bodyColor' >
 				<div className='panel-heading headingColor'>
-					<h3>{this.props.title} {status}</h3>
+					<h3 class="inline">{this.props.title} {status}</h3>
+					{mybutton}
 				</div>
 				<div className="textSpacing">
 					<p className="textColor">Made by {this.props.author} at {this.formatDate(this.props.creation)}</p>

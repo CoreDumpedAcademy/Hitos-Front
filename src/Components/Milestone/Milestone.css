@@ -1,4 +1,8 @@
 @media all {
+  .Milestone {
+    margin: 10px 0px 10px 0px;
+  }
+
   .bodyColor {
     background: #000;
   }
@@ -9,9 +13,19 @@
 
   .headingColor {
     background: #AAA !important;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
   }
 
   .textColor {
     color: #FFF;
+  }
+
+  .inline{
+    display: inline-block;
   }
 }
