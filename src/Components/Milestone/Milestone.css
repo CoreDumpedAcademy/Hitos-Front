@@ -1,4 +1,34 @@
 @media all {
+  .Milestone {
+    border: 0.5rem solid green;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .labelStatus {
+    background-color: rgb(6, 131, 233);
+    color: white;
+    text-align: center;
+    position: absolute;
+    right: 0rem;
+    padding: 0.5rem 1rem 1rem 1rem;
+    border-bottom-left-radius: 1.5rem;
+  }
+
+  .panel-heading {
+    padding: 0rem 7rem 0rem 7rem;
+  }
+
+  .panel-heading h3 {
+    margin: 0rem;
+    padding: 1rem;
+  }
+
+  .clearBoth{
+    clear: both;
+  }
+
   .bodyColor {
     background: #000;
   }
@@ -7,11 +37,28 @@
     padding: 10px 10px 0px 15px;
   }
 
+  .textSpacing > Row > Col > p {
+    text-align: center;
+    color: #fff;
+  }
+
   .headingColor {
-    background: #AAA !important;
+    background: #aaa !important;
+  }
+
+  .description {
+    background: #aaa !important;
+    margin: 1rem 0rem 0rem 0rem;
+  }
+  
+  .description p {
+    color: black;
+    margin: 0rem;
+    padding:  0.5rem 2rem 0.5rem 2rem;
   }
 
   .textColor {
-    color: #FFF;
+    text-align: center;
+    color: #fff;
   }
 }

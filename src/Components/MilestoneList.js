@@ -11,11 +11,11 @@ class MilestoneList extends React.Component {
   renderMS(datas) {
     if (datas.length > 0) {
       return (
-        <div>
+        <Row>
           {datas.map(data => (
             <Col xs={12} md={4}>
               <Milestone
-                key={data._id}
+                identifier={data._id}
                 creation={data.creation}
                 title={data.title}
                 author={data.author.userName}
@@ -27,7 +27,7 @@ class MilestoneList extends React.Component {
               />
             </Col>
           ))}
-        </div>
+        </Row>
       );
     } else {
       return <NoCoincidences />;
@@ -37,10 +37,8 @@ class MilestoneList extends React.Component {
 	render(){
 		return(
 			<div className='MilestoneList'>
-      <Grid>
-          <Row>
-				    {this.renderMS(this.props.data)}
-          </Row>
+        <Grid>
+          {this.renderMS(this.props.data)}
         </Grid>
 			</div>
 		);

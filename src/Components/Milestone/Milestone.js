@@ -1,5 +1,8 @@
 import React from 'react';
-
+import {
+	Row,
+	Col
+  } from "react-bootstrap";
 import "./Milestone.css";
 
 class Milestone extends React.Component{
@@ -8,21 +11,39 @@ class Milestone extends React.Component{
 		return (date.toLocaleDateString());
 	}
 
-	render(){
+	chooseLabel(status){
+		return "labelStatus labelColor";
+	}
 
-        var status;
+	render(){
+		var status;
+		
         if(this.props.status)
-				status = ` || STATUS: ${this.props.status}`;
+				status = `${this.props.status}`;
 		return(
 			<div className='Milestone panel panel-default bodyColor' >
+				<div className={this.chooseLabel(status)}>{status}</div>
 				<div className='panel-heading headingColor'>
-					<h3>{this.props.title} {status}</h3>
+					<h3>{this.props.title}</h3>
 				</div>
 				<div className="textSpacing">
-					<p className="textColor">Made by {this.props.author} at {this.formatDate(this.props.creation)}</p>
-					<p className="textColor">Week: {this.props.week}		{this.props.category} -> {this.props.level}</p>
-					<p className="textColor">{this.props.description}</p>
+					<Row>
+						<Col xs={4}>
+							<p>Week: {this.props.week}</p>
+						</Col>
+						<Col xs={4}>
+							<p>Cathegory: {this.props.category}</p>
+						</Col>
+						<Col xs={4}>
+							<p>Level: {this.props.level}</p>
+						</Col>	
+					</Row>
+					<span className="textColor">Description:</span>
 				</div>
+				<div className="description">
+					<p>{this.props.description}</p>
+				</div>
+				<p className="textColor">Written on {this.formatDate(this.props.creation)} by {this.props.author}</p>
 			</div>
 		)
 	}
