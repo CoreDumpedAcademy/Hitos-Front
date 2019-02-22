@@ -25,7 +25,7 @@ class Milestone extends React.Component{
         var status;
         var mybutton;
         if(this.props.status){
-        	status = ` || STATUS: ${this.props.status}`;
+        	status = `${this.props.status}`;
         	mybutton = <Button class="inline" onClick={ this.handleSubmit }
 						bsSize="large"
 					>X</Button>
@@ -35,8 +35,7 @@ class Milestone extends React.Component{
 			<div className='Milestone panel panel-default bodyColor' >
 				<div className={this.chooseLabel(status)}>{status}</div>
 				<div className='panel-heading headingColor'>
-					<h3>{this.props.title}</h3>
-					<h3 class="inline">{this.props.title} {status}</h3>
+					<h3 class="inline">{this.props.title}</h3>
 					{mybutton}
 				</div>
 				<div className="textSpacing">
