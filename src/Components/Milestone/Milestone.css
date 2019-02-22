@@ -32,22 +32,19 @@
 
   .textSpacing {
     padding: 10px 10px 0px 15px;
-  }
-
-  .textSpacing > Row {
     text-align: center;
     color: #fff;
-    background: blue;
+  }
+
+  .headingParams {
+    width: 100%;
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
   }
 
   .headingColor {
     background: #AAA !important;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    white-space: nowrap;
-    overflow-x: auto;
-    overflow-y: hidden;
   }
 
   .description {
@@ -58,12 +55,23 @@
   .description p {
     color: black;
     margin: 0rem;
-    padding:  0.5rem 2rem 0.5rem 2rem;
+    padding:  0.5rem 2rem 0.7rem 2rem;
   }
 
   .textColor {
-    text-align: center;
     color: #fff;
+  }
+
+  .textAlignLeft {
+    text-align: left;
+  }
+
+  .textAlignRight {
+    text-align: right;
+  }
+
+  .bottomSign {
+    margin: 1rem 1rem 1rem 1rem;
   }
 
   .inline{

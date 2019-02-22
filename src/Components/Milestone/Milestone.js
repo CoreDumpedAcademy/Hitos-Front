@@ -26,7 +26,7 @@ class Milestone extends React.Component{
         var mybutton;
         if(this.props.status){
         	status = `${this.props.status}`;
-        	mybutton = <Button class="inline" onClick={ this.handleSubmit }
+        	mybutton = <Button className="inline" onClick={ this.handleSubmit }
 						bsSize="large"
 					>X</Button>
 		}
@@ -34,8 +34,8 @@ class Milestone extends React.Component{
 		return(
 			<div className='Milestone panel panel-default bodyColor' >
 				<div className={this.chooseLabel(status)}>{status}</div>
-				<div className='panel-heading headingColor'>
-					<h3 class="inline">{this.props.title}</h3>
+				<div className='panel-heading headingColor headingParams'>
+					<h3 className="inline">{this.props.title}</h3>
 					{mybutton}
 				</div>
 				<div className="textSpacing">
@@ -50,12 +50,14 @@ class Milestone extends React.Component{
 							<p>Level: {this.props.level}</p>
 						</Col>	
 					</Row>
-					<span className="textColor">Description:</span>
+					<div className="textAlignLeft">
+						<span>Description:</span>
+					</div>
 				</div>
 				<div className="description">
 					<p>{this.props.description}</p>
 				</div>
-				<p className="textColor">Written on {this.formatDate(this.props.creation)} by {this.props.author}</p>
+				<p className="textColor textAlignRight bottomSign">Written on {this.formatDate(this.props.creation)} by {this.props.author}</p>
 			</div>
 		)
 	}
