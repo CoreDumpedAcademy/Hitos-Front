@@ -3,6 +3,7 @@ import {
 	Row,
 	Col
   } from "react-bootstrap";
+import {Button} from "react-bootstrap";
 import "./Milestone.css";
 
 class Milestone extends React.Component{
@@ -15,16 +16,28 @@ class Milestone extends React.Component{
 		return "labelStatus labelColor";
 	}
 
+	handleSubmit = event => {
+		event.preventDefault();
+	}
+
+
 	render(){
-		var status;
+        var status;
+        var mybutton;
+        if(this.props.status){
+        	status = ` || STATUS: ${this.props.status}`;
+        	mybutton = <Button class="inline" onClick={ this.handleSubmit }
+						bsSize="large"
+					>X</Button>
+		}
 		
-        if(this.props.status)
-				status = `${this.props.status}`;
 		return(
 			<div className='Milestone panel panel-default bodyColor' >
 				<div className={this.chooseLabel(status)}>{status}</div>
 				<div className='panel-heading headingColor'>
 					<h3>{this.props.title}</h3>
+					<h3 class="inline">{this.props.title} {status}</h3>
+					{mybutton}
 				</div>
 				<div className="textSpacing">
 					<Row>

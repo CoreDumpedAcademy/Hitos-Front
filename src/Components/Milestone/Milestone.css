@@ -4,6 +4,7 @@
     border-radius: 1.5rem;
     overflow: hidden;
     position: relative;
+    margin: 10px 0px 10px 0px;
   }
 
   .labelStatus {
@@ -43,7 +44,13 @@
   }
 
   .headingColor {
-    background: #aaa !important;
+    background: #AAA !important;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
   }
 
   .description {
@@ -60,5 +67,9 @@
   .textColor {
     text-align: center;
     color: #fff;
+  }
+
+  .inline{
+    display: inline-block;
   }
 }
