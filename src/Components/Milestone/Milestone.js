@@ -5,6 +5,8 @@ import {
   } from "react-bootstrap";
 import {Button} from "react-bootstrap";
 import "./Milestone.css";
+import Paths from "../../Dictionaries/Paths";
+import axios from "axios";
 
 class Milestone extends React.Component{
 	formatDate(propsDate){
@@ -16,19 +18,23 @@ class Milestone extends React.Component{
 		return "labelStatus labelColor";
 	}
 
-	handleSubmit = event => {
+	handleSubmit = async event => {
 		event.preventDefault();
-	}
 
+		axios.put(
+        Paths.Api.getUsers+"", 
+        "mytoken", 
+        {headers: {"Content-Type": "text/plain"}}
+    )
+    .then(r => console.log(r.status))
+    .catch(e => console.log(e));
+	}
+	// if(this.props.status)
 
 	render(){
         var status;
-        var mybutton;
         if(this.props.status){
         	status = `${this.props.status}`;
-        	mybutton = <Button className="inline" onClick={ this.handleSubmit }
-						bsSize="large"
-					>X</Button>
 		}
 		
 		return(
@@ -36,7 +42,6 @@ class Milestone extends React.Component{
 				<div className={this.chooseLabel(status)}>{status}</div>
 				<div className='panel-heading headingColor headingParams'>
 					<h3 className="inline">{this.props.title}</h3>
-					{mybutton}
 				</div>
 				<div className="textSpacing">
 					<Row>
