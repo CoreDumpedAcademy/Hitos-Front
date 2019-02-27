@@ -3,12 +3,14 @@ import {
 	Row,
 	Col
   } from "react-bootstrap";
-import {Button} from "react-bootstrap";
+//import {Button} from "react-bootstrap";
 import "./Milestone.css";
 import Paths from "../../Dictionaries/Paths";
 import axios from "axios";
 
 import Names from "../../Dictionaries/TitlesAndNames";
+
+import Storage from "../../Middlewares/storeData";
 
 class Milestone extends React.Component{
 
@@ -33,7 +35,7 @@ class Milestone extends React.Component{
 
 	handleSubmit = async event => {
 		event.preventDefault();
-		var userId = localStorage.getItem(Names.storageKeys.MyId);
+		var userId = Storage.getData(Names.storageKeys.MyId);
 		var milestoneId = this.props._id;
 
 		axios.put(
@@ -47,7 +49,7 @@ class Milestone extends React.Component{
 
 	handleClick(e) {
 		e.preventDefault();
-		var userId = localStorage.getItem(Names.storageKeys.MyId);
+		var userId = Storage.getData(Names.storageKeys.MyId);
 		var milestoneId = this.state.identifier;
 		var newStatus = "done";
 
