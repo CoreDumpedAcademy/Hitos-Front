@@ -6,6 +6,8 @@ import MilestoneList from '../../Components/MilestoneList';
 import Paths from "../../Dictionaries/Paths";
 import Names from "../../Dictionaries/TitlesAndNames";
 
+import Storage from "../../Middlewares/storeData";
+
 class Profile extends Component {
 	constructor(props){
 		super(props);
@@ -19,9 +21,11 @@ class Profile extends Component {
 	componentDidMount() {
 		var tempList = [];
 		// Use this with your username
-		// localStorage.setItem('user', 'LordMascachapas');
-		axios.get(`${Paths.Api.getByName}/${localStorage.getItem(Names.storageKeys.User)}`)
+		// Storage.setData('user', 'LordMascachapas');
+		axios.get(`${Paths.Api.getByName}/${Storage.getData(Names.storageKeys.User)}`)
 		.then(res => {
+			console.log(`${Paths.Api.getByName}/${Storage.getData(Names.storageKeys.User)}`)
+			console.log(res.data[0]);
 			for(var i = 0; i < res.data[0].milestonesCollection.length; i++) {
 				tempList[i] = res.data[0].milestonesCollection[i].milestone;
 				tempList[i].status = res.data[0].milestonesCollection[i].status;

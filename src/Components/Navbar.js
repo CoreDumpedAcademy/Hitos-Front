@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 
 import Names from "../Dictionaries/TitlesAndNames";
 
+import Storage from "../Middlewares/storeData";
+
 const LinkNav = props => {
   const splittedUrl = window.location.href.split("/")
   const currentUrl = `/${splittedUrl[splittedUrl.length-1]}`
@@ -10,7 +12,7 @@ const LinkNav = props => {
   const itemStyle = ( props.path === currentUrl ? "active " : "") + "nav_item";
 
   if(props.change)
-    return <li className={itemStyle}><Link to={props.path} onClick={() => localStorage.setItem(Names.storageKeys.Status, "")}>{props.text}</Link></li>
+    return <li className={itemStyle}><Link to={props.path} onClick={() => Storage.setData(Names.storageKeys.Status, "")}>{props.text}</Link></li>
 
   else
     return <li className={itemStyle}><Link to={props.path}>{props.text}</Link></li>

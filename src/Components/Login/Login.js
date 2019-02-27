@@ -10,6 +10,8 @@ import NewAlert from "../../Components/NewAlert";
 import Paths from "../../Dictionaries/Paths";
 import Names from "../../Dictionaries/TitlesAndNames";
 
+import Storage from "../../Middlewares/storeData";
+
 export default class Login extends Component {
   constructor(props) {
     super(props);
@@ -52,15 +54,15 @@ export default class Login extends Component {
         password: user.password
       })
       .then(res => {
-        localStorage.setItem(Names.storageKeys.isAdminOrMentor, res.data.role)
-        localStorage.setItem(Names.storageKeys.Token, res.data.token);
-        localStorage.setItem(Names.storageKeys.User, user.userName);
-        localStorage.setItem(Names.storageKeys.MyId, res.data.id);
-        localStorage.setItem(Names.storageKeys.Status, "log");
+        Storage.setData(Names.storageKeys.isAdminOrMentor, res.data.role)
+        Storage.setData(Names.storageKeys.Token, res.data.token);
+        Storage.setData(Names.storageKeys.User, user.userName);
+        Storage.setData(Names.storageKeys.MyId, res.data.id);
+        Storage.setData(Names.storageKeys.Status, "log");
         console.log(res);
         console.log(res.status);
-        console.log(localStorage.getItem(Names.storageKeys.User));
-        console.log(localStorage.getItem(Names.storageKeys.isAdminOrMentor));
+        console.log(Storage.getData(Names.storageKeys.User));
+        console.log(Storage.getData(Names.storageKeys.isAdminOrMentor));
         if (res.status === 200) window.location.href = Paths.Links.Profile;
         else this.toggleAlert();
       })
@@ -74,7 +76,7 @@ export default class Login extends Component {
   };
   
   /*componentDidMount(){
-    const token=localStorage.getItem(Names.storageKeys.Token);
+    const token=Storage.getData(Names.storageKeys.Token);
     axios.defaults.headers.common = {'authorization': "bearer " + token}
 
     axios.get('http://localhost:3000/api/private')

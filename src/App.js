@@ -15,6 +15,8 @@ import CreatingMilestone from "./Pages/CreatingMilestone/CreatingMilestone";
 import Paths from "./Dictionaries/Paths";
 import Names from "./Dictionaries/TitlesAndNames";
 
+import Storage from "./Middlewares/storeData";
+
 import Navbar from "./Components/Navbar";
 
 /**
@@ -77,7 +79,7 @@ class App extends Component {
   componentDidMount() {
     document.title = Names.AppTitle;
 
-    if (localStorage.getItem(Names.storageKeys.isAdminOrMentor) !== "true") {
+    if (Storage.getData(Names.storageKeys.isAdminOrMentor) !== "true") {
       this.setState({
         data2: this.state.data2.filter(function(el) {
           return el.path !== Paths.Links.CreatingMilestone;
@@ -87,7 +89,7 @@ class App extends Component {
   }
 
   renderNav() {
-    if (localStorage.getItem(Names.storageKeys.Status) === "log")
+    if (Storage.getData(Names.storageKeys.Status) === "log")
       return <Navbar data={this.state.data2} />;
     else return <Navbar data={this.state.data} />;
   }

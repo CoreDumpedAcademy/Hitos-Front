@@ -10,6 +10,8 @@ import NewAlert from "../NewAlert";
 
 import Names from "../../Dictionaries/TitlesAndNames";
 
+import Storage from "../../Middlewares/storeData";
+
 const TextInput = props => {
   return (
     <FormGroup controlId={props.id} bsSize="large">
@@ -99,7 +101,7 @@ class NewMilestone extends Component {
       week: this.state.week,
       category: this.state.category,
       level: this.state.level,
-      author: localStorage.getItem(Names.storageKeys.MyId)
+      author: Storage.getData(Names.storageKeys.MyId)
     };
 
     await axios.post(Paths.Api.getMilestones, { 

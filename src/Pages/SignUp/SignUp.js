@@ -8,6 +8,8 @@ import NewAlert from "../../Components/NewAlert";
 
 import Names from "../../Dictionaries/TitlesAndNames";
 
+import Storage from "../../Middlewares/storeData";
+
 export default class SignUp extends Component {
   constructor(props) {
     super(props);
@@ -26,7 +28,7 @@ export default class SignUp extends Component {
   }
   
   componentDidMount() {
-    localStorage.setItem(Names.storageKeys.Status, "");
+    Storage.setData(Names.storageKeys.Status, "");
   }
 
   validateForm() {

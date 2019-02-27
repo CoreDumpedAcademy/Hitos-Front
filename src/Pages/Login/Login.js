@@ -10,9 +10,11 @@ import Landing from "../../Components/Landing/Landing";
 
 import Names from "../../Dictionaries/TitlesAndNames";
 
+import Storage from "../../Middlewares/storeData";
+
 export default class Login extends Component {
   componentDidMount() {
-    localStorage.setItem(Names.storageKeys.Status, "");
+    Storage.setData(Names.storageKeys.Status, "");
   }
 
   render() {
