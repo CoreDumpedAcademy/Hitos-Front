@@ -11,17 +11,28 @@ import axios from "axios";
 import Names from "../../Dictionaries/TitlesAndNames";
 
 import Storage from "../../Middlewares/storeData";
+import SelectField from "../SelectField.js";
 
 class Milestone extends React.Component{
 
 	constructor(props){
 		super(props);
 		this.state = {
+			enumerator: {
+		       	status: []
+		    },
 			identifier: props.identifier,
 			status: props.status
 		};
 
-		this.handleClick = this.handleClick.bind(this);
+		this.handleChange = this.handleChange.bind(this);
+
+		axios.get(Paths.Api.getApiEnumerator).then(res => {
+	      this.setState({
+	        enumerator: res.data
+	      });
+	    });
+
 	}
 
 	formatDate(propsDate){
@@ -33,50 +44,44 @@ class Milestone extends React.Component{
 		return "labelStatus labelColor";
 	}
 
-	handleSubmit = async event => {
+
+	handleChange = event => {
 		event.preventDefault();
 		var userId = Storage.getData(Names.storageKeys.MyId);
-		var milestoneId = this.props._id;
-
-		axios.put(
-        Paths.Api.getUsers+userId+"/milestone"+milestoneId+"/update", 
-        { 
-      		status: "pending"
-      	})
-	    .then(r => console.log(r.status))
-	    .catch(e => console.log(e));
-	}
-
-	handleClick(e) {
-		e.preventDefault();
-		var userId = Storage.getData(Names.storageKeys.MyId);
 		var milestoneId = this.state.identifier;
-		var newStatus = "done";
+
+		console.log(userId);
+		console.log(milestoneId);
+		console.log(event.target.value);
+
 
 		axios.put(
         Paths.Api.getUsers+"/"+userId+"/milestones/"+milestoneId+"/update", 
         { 
-      		status: newStatus
+      		status: event.target.value
       	})
-	    .then(r => {
-	    	console.log(r.status);
-	    	this.setState({
-	          status: newStatus
-	        });
-	    })
+	    .then(r => console.log(r.status))
 	    .catch(e => console.log(e));
-	 }
-	// if(this.props.status)
+
+
+	    this.setState({
+	      [event.target.id]: event.target.value
+	    });
+	};
 
 	render(){
-        /*var status;
-        if(this.props.status){
-        	status = `${this.props.status}`;
-		}*/
 		
 		return(
 			<div className='Milestone panel panel-default bodyColor' >
-				<button onClick={this.handleClick} className={this.chooseLabel(this.state.status)}>{this.state.status}</button>
+				<SelectField
+		            title="Status:"
+		            id="status"
+		            placeholder={this.state.status}
+		            className={this.chooseLabel(this.state.status)}
+		            options={this.state.enumerator.status}
+		            onChange={this.handleChange}
+		            value={this.state.status}
+		          />
 				<div className='panel-heading headingColor headingParams'>
 					<h3 className="inline">{this.props.title}</h3>
 				</div>
