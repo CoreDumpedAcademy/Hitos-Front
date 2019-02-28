@@ -11,7 +11,7 @@ import axios from "axios";
 import Names from "../../Dictionaries/TitlesAndNames";
 
 import Storage from "../../Middlewares/storeData";
-import SelectField from "../SelectField.js";
+import SelectFieldStatus from "../SelectFieldStatus/SelectFieldStatus.js";
 
 class Milestone extends React.Component{
 
@@ -72,11 +72,10 @@ class Milestone extends React.Component{
 	render(){
 		
 		return(
-			<div className='Milestone panel panel-default bodyColor' >
-				<SelectField
+			<div class='Milestone panel panel-default bodyColor' >
+				<SelectFieldStatus
 		            title="Status:"
 		            id="status"
-		            placeholder={this.state.status}
 		            className={this.chooseLabel(this.state.status)}
 		            options={this.state.enumerator.status}
 		            onChange={this.handleChange}

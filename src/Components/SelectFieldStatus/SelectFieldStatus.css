@@ -1,0 +1,10 @@
+@media all {
+	.SelField{
+		position: absolute;
+    	right: 0rem;
+	}
+
+	.relative{
+		position: relative;
+	}
+}
